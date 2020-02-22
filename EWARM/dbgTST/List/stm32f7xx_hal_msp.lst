@@ -1,0 +1,342 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM         10/Feb/2020  21:42:20
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  D:\win10\f7dbg\dbgTST\Src\stm32f7xx_hal_msp.c
+#    Command line =  
+#        -f C:\Users\rus08\AppData\Local\Temp\EW79CE.tmp
+#        (D:\win10\f7dbg\dbgTST\Src\stm32f7xx_hal_msp.c -D USE_HAL_DRIVER -D
+#        STM32F723xx -lC D:\win10\f7dbg\dbgTST\EWARM\dbgTST\List -lA
+#        D:\win10\f7dbg\dbgTST\EWARM\dbgTST\List -o
+#        D:\win10\f7dbg\dbgTST\EWARM\dbgTST\Obj --debug --endian=little
+#        --cpu=Cortex-M7 -e --fpu=VFPv5_sp --dlib_config "C:\Program Files
+#        (x86)\IAR Systems\Embedded Workbench 8.1\arm\inc\c\DLib_Config_Full.h"
+#        -I D:\win10\f7dbg\dbgTST\EWARM/../Inc\ -I
+#        D:\win10\f7dbg\dbgTST\EWARM/../Drivers/STM32F7xx_HAL_Driver/Inc\ -I
+#        D:\win10\f7dbg\dbgTST\EWARM/../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy\
+#        -I
+#        D:\win10\f7dbg\dbgTST\EWARM/../Drivers/CMSIS/Device/ST/STM32F7xx/Include\
+#        -I D:\win10\f7dbg\dbgTST\EWARM/../Drivers/CMSIS/Include\ -Ohz)
+#    Locale       =  C
+#    List file    =  
+#        D:\win10\f7dbg\dbgTST\EWARM\dbgTST\List\stm32f7xx_hal_msp.lst
+#    Object file  =  D:\win10\f7dbg\dbgTST\EWARM\dbgTST\Obj\stm32f7xx_hal_msp.o
+#
+###############################################################################
+
+D:\win10\f7dbg\dbgTST\Src\stm32f7xx_hal_msp.c
+      1          /* USER CODE BEGIN Header */
+      2          /**
+      3            ******************************************************************************
+      4            * File Name          : stm32f7xx_hal_msp.c
+      5            * Description        : This file provides code for the MSP Initialization 
+      6            *                      and de-Initialization codes.
+      7            ******************************************************************************
+      8            * @attention
+      9            *
+     10            * <h2><center>&copy; Copyright (c) 2020 STMicroelectronics.
+     11            * All rights reserved.</center></h2>
+     12            *
+     13            * This software component is licensed by ST under BSD 3-Clause license,
+     14            * the "License"; You may not use this file except in compliance with the
+     15            * License. You may obtain a copy of the License at:
+     16            *                        opensource.org/licenses/BSD-3-Clause
+     17            *
+     18            ******************************************************************************
+     19            */
+     20          /* USER CODE END Header */
+     21          
+     22          /* Includes ------------------------------------------------------------------*/
+     23          #include "main.h"
+     24          /* USER CODE BEGIN Includes */
+     25          
+     26          /* USER CODE END Includes */
+     27          
+     28          /* Private typedef -----------------------------------------------------------*/
+     29          /* USER CODE BEGIN TD */
+     30          
+     31          /* USER CODE END TD */
+     32          
+     33          /* Private define ------------------------------------------------------------*/
+     34          /* USER CODE BEGIN Define */
+     35           
+     36          /* USER CODE END Define */
+     37          
+     38          /* Private macro -------------------------------------------------------------*/
+     39          /* USER CODE BEGIN Macro */
+     40          
+     41          /* USER CODE END Macro */
+     42          
+     43          /* Private variables ---------------------------------------------------------*/
+     44          /* USER CODE BEGIN PV */
+     45          
+     46          /* USER CODE END PV */
+     47          
+     48          /* Private function prototypes -----------------------------------------------*/
+     49          /* USER CODE BEGIN PFP */
+     50          
+     51          /* USER CODE END PFP */
+     52          
+     53          /* External functions --------------------------------------------------------*/
+     54          /* USER CODE BEGIN ExternalFunctions */
+     55          
+     56          /* USER CODE END ExternalFunctions */
+     57          
+     58          /* USER CODE BEGIN 0 */
+     59          
+     60          /* USER CODE END 0 */
+     61          /**
+     62            * Initializes the Global MSP.
+     63            */
+
+   \                                 In section .text, align 2, keep-with-next
+     64          void HAL_MspInit(void)
+     65          {
+   \                     HAL_MspInit: (+1)
+   \        0x0   0xB081             SUB      SP,SP,#+4
+     66            /* USER CODE BEGIN MspInit 0 */
+     67          
+     68            /* USER CODE END MspInit 0 */
+     69          
+     70            __HAL_RCC_PWR_CLK_ENABLE();
+   \        0x2   0x....             LDR.N    R0,??DataTable3  ;; 0x40023840
+   \        0x4   0x6801             LDR      R1,[R0, #+0]
+   \        0x6   0xF041 0x5180      ORR      R1,R1,#0x10000000
+   \        0xA   0x6001             STR      R1,[R0, #+0]
+   \        0xC   0x6802             LDR      R2,[R0, #+0]
+   \        0xE   0xF002 0x5280      AND      R2,R2,#0x10000000
+   \       0x12   0x9200             STR      R2,[SP, #+0]
+   \       0x14   0x9900             LDR      R1,[SP, #+0]
+     71            __HAL_RCC_SYSCFG_CLK_ENABLE();
+   \       0x16   0x6842             LDR      R2,[R0, #+4]
+   \       0x18   0xF442 0x4280      ORR      R2,R2,#0x4000
+   \       0x1C   0x6042             STR      R2,[R0, #+4]
+   \       0x1E   0x6840             LDR      R0,[R0, #+4]
+   \       0x20   0xF400 0x4080      AND      R0,R0,#0x4000
+   \       0x24   0x9000             STR      R0,[SP, #+0]
+   \       0x26   0x9900             LDR      R1,[SP, #+0]
+     72          
+     73            /* System interrupt init*/
+     74          
+     75            /* USER CODE BEGIN MspInit 1 */
+     76          
+     77            /* USER CODE END MspInit 1 */
+     78          }
+   \       0x28   0xB001             ADD      SP,SP,#+4
+   \       0x2A   0x4770             BX       LR               ;; return
+     79          
+     80          /**
+     81          * @brief UART MSP Initialization
+     82          * This function configures the hardware resources used in this example
+     83          * @param huart: UART handle pointer
+     84          * @retval None
+     85          */
+
+   \                                 In section .text, align 2, keep-with-next
+     86          void HAL_UART_MspInit(UART_HandleTypeDef* huart)
+     87          {
+   \                     HAL_UART_MspInit: (+1)
+   \        0x0   0xB538             PUSH     {R3-R5,LR}
+   \        0x2   0xB086             SUB      SP,SP,#+24
+   \        0x4   0x4604             MOV      R4,R0
+     88            GPIO_InitTypeDef GPIO_InitStruct = {0};
+   \        0x6   0xA801             ADD      R0,SP,#+4
+   \        0x8   0x2114             MOVS     R1,#+20
+   \        0xA   0x.... 0x....      BL       __aeabi_memclr4
+     89            if(huart->Instance==USART6)
+   \        0xE   0x6824             LDR      R4,[R4, #+0]
+   \       0x10   0x....             LDR.N    R5,??DataTable3_1  ;; 0x40011400
+   \       0x12   0x42AC             CMP      R4,R5
+   \       0x14   0xD128             BNE.N    ??HAL_UART_MspInit_0
+     90            {
+     91            /* USER CODE BEGIN USART6_MspInit 0 */
+     92          
+     93            /* USER CODE END USART6_MspInit 0 */
+     94              /* Peripheral clock enable */
+     95              __HAL_RCC_USART6_CLK_ENABLE();
+   \       0x16   0x....             LDR.N    R0,??DataTable3_2  ;; 0x40023830
+   \       0x18   0x6941             LDR      R1,[R0, #+20]
+   \       0x1A   0xF041 0x0120      ORR      R1,R1,#0x20
+   \       0x1E   0x6141             STR      R1,[R0, #+20]
+   \       0x20   0x6942             LDR      R2,[R0, #+20]
+   \       0x22   0xF002 0x0220      AND      R2,R2,#0x20
+   \       0x26   0x9200             STR      R2,[SP, #+0]
+   \       0x28   0x9900             LDR      R1,[SP, #+0]
+     96            
+     97              __HAL_RCC_GPIOC_CLK_ENABLE();
+   \       0x2A   0x6803             LDR      R3,[R0, #+0]
+   \       0x2C   0xF043 0x0304      ORR      R3,R3,#0x4
+   \       0x30   0x6003             STR      R3,[R0, #+0]
+   \       0x32   0x6802             LDR      R2,[R0, #+0]
+     98              /**USART6 GPIO Configuration    
+     99              PC7     ------> USART6_RX
+    100              PC6     ------> USART6_TX 
+    101              */
+    102              GPIO_InitStruct.Pin = GPIO_PIN_7|GPIO_PIN_6;
+   \       0x34   0x23C0             MOVS     R3,#+192
+    103              GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    104              GPIO_InitStruct.Pull = GPIO_NOPULL;
+    105              GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
+    106              GPIO_InitStruct.Alternate = GPIO_AF8_USART6;
+    107              HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+   \       0x36   0x....             LDR.N    R0,??DataTable3_3  ;; 0x40020800
+   \       0x38   0xF002 0x0204      AND      R2,R2,#0x4
+   \       0x3C   0x9200             STR      R2,[SP, #+0]
+   \       0x3E   0x9900             LDR      R1,[SP, #+0]
+   \       0x40   0x2202             MOVS     R2,#+2
+   \       0x42   0x9301             STR      R3,[SP, #+4]
+   \       0x44   0x2100             MOVS     R1,#+0
+   \       0x46   0x9202             STR      R2,[SP, #+8]
+   \       0x48   0x9103             STR      R1,[SP, #+12]
+   \       0x4A   0x2108             MOVS     R1,#+8
+   \       0x4C   0x2203             MOVS     R2,#+3
+   \       0x4E   0x9105             STR      R1,[SP, #+20]
+   \       0x50   0x9204             STR      R2,[SP, #+16]
+   \       0x52   0xA901             ADD      R1,SP,#+4
+   \       0x54   0x.... 0x....      BL       HAL_GPIO_Init
+    108          
+    109              /* USART6 interrupt Init */
+    110              HAL_NVIC_SetPriority(USART6_IRQn, 6, 0);
+   \       0x58   0x2200             MOVS     R2,#+0
+   \       0x5A   0x2106             MOVS     R1,#+6
+   \       0x5C   0x2047             MOVS     R0,#+71
+   \       0x5E   0x.... 0x....      BL       HAL_NVIC_SetPriority
+    111              HAL_NVIC_EnableIRQ(USART6_IRQn);
+   \       0x62   0x2047             MOVS     R0,#+71
+   \       0x64   0x.... 0x....      BL       HAL_NVIC_EnableIRQ
+    112            /* USER CODE BEGIN USART6_MspInit 1 */
+    113          
+    114            /* USER CODE END USART6_MspInit 1 */
+    115            }
+    116          
+    117          }
+   \                     ??HAL_UART_MspInit_0: (+1)
+   \       0x68   0xB007             ADD      SP,SP,#+28
+   \       0x6A   0xBD30             POP      {R4,R5,PC}       ;; return
+    118          
+    119          /**
+    120          * @brief UART MSP De-Initialization
+    121          * This function freeze the hardware resources used in this example
+    122          * @param huart: UART handle pointer
+    123          * @retval None
+    124          */
+
+   \                                 In section .text, align 2, keep-with-next
+    125          void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
+    126          {
+   \                     HAL_UART_MspDeInit: (+1)
+   \        0x0   0x6800             LDR      R0,[R0, #+0]
+   \        0x2   0x....             LDR.N    R1,??DataTable3_1  ;; 0x40011400
+   \        0x4   0x4288             CMP      R0,R1
+   \        0x6   0xD000             BEQ.N    ??HAL_UART_MspDeInit_0
+   \        0x8   0x4770             BX       LR
+   \                     ??HAL_UART_MspDeInit_0: (+1)
+   \        0xA   0xB580             PUSH     {R7,LR}
+    127            if(huart->Instance==USART6)
+    128            {
+    129            /* USER CODE BEGIN USART6_MspDeInit 0 */
+    130          
+    131            /* USER CODE END USART6_MspDeInit 0 */
+    132              /* Peripheral clock disable */
+    133              __HAL_RCC_USART6_CLK_DISABLE();
+   \        0xC   0x....             LDR.N    R0,??DataTable3_4  ;; 0x40023844
+    134            
+    135              /**USART6 GPIO Configuration    
+    136              PC7     ------> USART6_RX
+    137              PC6     ------> USART6_TX 
+    138              */
+    139              HAL_GPIO_DeInit(GPIOC, GPIO_PIN_7|GPIO_PIN_6);
+   \        0xE   0x21C0             MOVS     R1,#+192
+   \       0x10   0x6802             LDR      R2,[R0, #+0]
+   \       0x12   0xF022 0x0220      BIC      R2,R2,#0x20
+   \       0x16   0x6002             STR      R2,[R0, #+0]
+   \       0x18   0x....             LDR.N    R0,??DataTable3_3  ;; 0x40020800
+   \       0x1A   0x.... 0x....      BL       HAL_GPIO_DeInit
+    140          
+    141              /* USART6 interrupt DeInit */
+    142              HAL_NVIC_DisableIRQ(USART6_IRQn);
+   \       0x1E   0x2047             MOVS     R0,#+71
+   \       0x20   0xE8BD 0x4002      POP      {R1,LR}
+   \       0x24   0x.... 0x....      B.W      HAL_NVIC_DisableIRQ
+    143            /* USER CODE BEGIN USART6_MspDeInit 1 */
+    144          
+    145            /* USER CODE END USART6_MspDeInit 1 */
+    146            }
+    147          
+    148          }
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3:
+   \        0x0   0x4002'3840        DC32     0x40023840
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_1:
+   \        0x0   0x4001'1400        DC32     0x40011400
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_2:
+   \        0x0   0x4002'3830        DC32     0x40023830
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_3:
+   \        0x0   0x4002'0800        DC32     0x40020800
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable3_4:
+   \        0x0   0x4002'3844        DC32     0x40023844
+
+   \                                 In section .rodata, align 4, keep-with-next
+   \                     ?_0:
+   \        0x0   0x0000'0000        DC32 0, 0, 0, 0, 0
+   \              0x0000'0000  
+   \              0x0000'0000  
+   \              0x0000'0000  
+   \              0x0000'0000  
+    149          
+    150          /* USER CODE BEGIN 1 */
+    151          
+    152          /* USER CODE END 1 */
+    153          
+    154          /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       4   HAL_MspInit
+       8   HAL_UART_MspDeInit
+         8   -> HAL_GPIO_DeInit
+         0   -> HAL_NVIC_DisableIRQ
+      40   HAL_UART_MspInit
+        40   -> HAL_GPIO_Init
+        40   -> HAL_NVIC_EnableIRQ
+        40   -> HAL_NVIC_SetPriority
+        40   -> __aeabi_memclr4
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable3
+       4  ??DataTable3_1
+       4  ??DataTable3_2
+       4  ??DataTable3_3
+       4  ??DataTable3_4
+      20  ?_0
+      44  HAL_MspInit
+      40  HAL_UART_MspDeInit
+     108  HAL_UART_MspInit
+
+ 
+  20 bytes in section .rodata
+ 212 bytes in section .text
+ 
+ 212 bytes of CODE  memory
+  20 bytes of CONST memory
+
+Errors: none
+Warnings: none

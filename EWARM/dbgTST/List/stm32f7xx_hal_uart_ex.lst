@@ -1,0 +1,478 @@
+###############################################################################
+#
+# IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM         10/Feb/2020  21:42:28
+# Copyright 1999-2018 IAR Systems AB.
+#
+#    Cpu mode     =  thumb
+#    Endian       =  little
+#    Source file  =  
+#        D:\win10\f7dbg\dbgTST\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_uart_ex.c
+#    Command line =  
+#        -f C:\Users\rus08\AppData\Local\Temp\EW9685.tmp
+#        (D:\win10\f7dbg\dbgTST\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_uart_ex.c
+#        -D USE_HAL_DRIVER -D STM32F723xx -lC
+#        D:\win10\f7dbg\dbgTST\EWARM\dbgTST\List -lA
+#        D:\win10\f7dbg\dbgTST\EWARM\dbgTST\List -o
+#        D:\win10\f7dbg\dbgTST\EWARM\dbgTST\Obj --debug --endian=little
+#        --cpu=Cortex-M7 -e --fpu=VFPv5_sp --dlib_config "C:\Program Files
+#        (x86)\IAR Systems\Embedded Workbench 8.1\arm\inc\c\DLib_Config_Full.h"
+#        -I D:\win10\f7dbg\dbgTST\EWARM/../Inc\ -I
+#        D:\win10\f7dbg\dbgTST\EWARM/../Drivers/STM32F7xx_HAL_Driver/Inc\ -I
+#        D:\win10\f7dbg\dbgTST\EWARM/../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy\
+#        -I
+#        D:\win10\f7dbg\dbgTST\EWARM/../Drivers/CMSIS/Device/ST/STM32F7xx/Include\
+#        -I D:\win10\f7dbg\dbgTST\EWARM/../Drivers/CMSIS/Include\ -Ohz)
+#    Locale       =  C
+#    List file    =  
+#        D:\win10\f7dbg\dbgTST\EWARM\dbgTST\List\stm32f7xx_hal_uart_ex.lst
+#    Object file  =  
+#        D:\win10\f7dbg\dbgTST\EWARM\dbgTST\Obj\stm32f7xx_hal_uart_ex.o
+#
+###############################################################################
+
+D:\win10\f7dbg\dbgTST\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_uart_ex.c
+      1          /**
+      2            ******************************************************************************
+      3            * @file    stm32f7xx_hal_uart_ex.c
+      4            * @author  MCD Application Team
+      5            * @brief   Extended UART HAL module driver.
+      6            *          This file provides firmware functions to manage the following extended
+      7            *          functionalities of the Universal Asynchronous Receiver Transmitter Peripheral (UART).
+      8            *           + Initialization and de-initialization functions
+      9            *           + Peripheral Control functions
+     10            *
+     11            *
+     12            @verbatim
+     13            ==============================================================================
+     14                         ##### UART peripheral extended features  #####
+     15            ==============================================================================
+     16          
+     17              (#) Declare a UART_HandleTypeDef handle structure.
+     18          
+     19              (#) For the UART RS485 Driver Enable mode, initialize the UART registers
+     20                  by calling the HAL_RS485Ex_Init() API.
+     21          
+     22            @endverbatim
+     23            ******************************************************************************
+     24            * @attention
+     25            *
+     26            * <h2><center>&copy; Copyright (c) 2017 STMicroelectronics.
+     27            * All rights reserved.</center></h2>
+     28            *
+     29            * This software component is licensed by ST under BSD 3-Clause license,
+     30            * the "License"; You may not use this file except in compliance with the
+     31            * License. You may obtain a copy of the License at:
+     32            *                        opensource.org/licenses/BSD-3-Clause
+     33            *
+     34            ******************************************************************************
+     35            */
+     36          
+     37          /* Includes ------------------------------------------------------------------*/
+     38          #include "stm32f7xx_hal.h"
+     39          
+     40          /** @addtogroup STM32F7xx_HAL_Driver
+     41            * @{
+     42            */
+     43          
+     44          /** @defgroup UARTEx UARTEx
+     45            * @brief UART Extended HAL module driver
+     46            * @{
+     47            */
+     48          
+     49          #ifdef HAL_UART_MODULE_ENABLED
+     50          
+     51          /* Private typedef -----------------------------------------------------------*/
+     52          /* Private define ------------------------------------------------------------*/
+     53          
+     54          /* Private macros ------------------------------------------------------------*/
+     55          /* Private variables ---------------------------------------------------------*/
+     56          /* Private function prototypes -----------------------------------------------*/
+     57          /** @defgroup UARTEx_Private_Functions UARTEx Private Functions
+     58            * @{
+     59            */
+     60          /**
+     61            * @}
+     62            */
+     63          
+     64          /* Exported functions --------------------------------------------------------*/
+     65          
+     66          /** @defgroup UARTEx_Exported_Functions  UARTEx Exported Functions
+     67            * @{
+     68            */
+     69          
+     70          /** @defgroup UARTEx_Exported_Functions_Group1 Initialization and de-initialization functions
+     71            * @brief    Extended Initialization and Configuration Functions
+     72            *
+     73          @verbatim
+     74          ===============================================================================
+     75                      ##### Initialization and Configuration functions #####
+     76           ===============================================================================
+     77              [..]
+     78              This subsection provides a set of functions allowing to initialize the USARTx or the UARTy
+     79              in asynchronous mode.
+     80                (+) For the asynchronous mode the parameters below can be configured:
+     81                  (++) Baud Rate
+     82                  (++) Word Length
+     83                  (++) Stop Bit
+     84                  (++) Parity: If the parity is enabled, then the MSB bit of the data written
+     85                       in the data register is transmitted but is changed by the parity bit.
+     86                  (++) Hardware flow control
+     87                  (++) Receiver/transmitter modes
+     88                  (++) Over Sampling Method
+     89                  (++) One-Bit Sampling Method
+     90                (+) For the asynchronous mode, the following advanced features can be configured as well:
+     91                  (++) TX and/or RX pin level inversion
+     92                  (++) data logical level inversion
+     93                  (++) RX and TX pins swap
+     94                  (++) RX overrun detection disabling
+     95                  (++) DMA disabling on RX error
+     96                  (++) MSB first on communication line
+     97                  (++) auto Baud rate detection
+     98              [..]
+     99              The HAL_RS485Ex_Init() API follows the UART RS485 mode configuration
+    100               procedures (details for the procedures are available in reference manual).
+    101          
+    102          @endverbatim
+    103          
+    104            Depending on the frame length defined by the M1 and M0 bits (7-bit,
+    105            8-bit or 9-bit), the possible UART formats are listed in the
+    106            following table.
+    107          
+    108              Table 1. UART frame format.
+    109              +-----------------------------------------------------------------------+
+    110              |  M1 bit |  M0 bit |  PCE bit  |             UART frame                |
+    111              |---------|---------|-----------|---------------------------------------|
+    112              |    0    |    0    |    0      |    | SB |    8 bit data   | STB |     |
+    113              |---------|---------|-----------|---------------------------------------|
+    114              |    0    |    0    |    1      |    | SB | 7 bit data | PB | STB |     |
+    115              |---------|---------|-----------|---------------------------------------|
+    116              |    0    |    1    |    0      |    | SB |    9 bit data   | STB |     |
+    117              |---------|---------|-----------|---------------------------------------|
+    118              |    0    |    1    |    1      |    | SB | 8 bit data | PB | STB |     |
+    119              |---------|---------|-----------|---------------------------------------|
+    120              |    1    |    0    |    0      |    | SB |    7 bit data   | STB |     |
+    121              |---------|---------|-----------|---------------------------------------|
+    122              |    1    |    0    |    1      |    | SB | 6 bit data | PB | STB |     |
+    123              +-----------------------------------------------------------------------+
+    124          
+    125            * @{
+    126            */
+    127          
+    128          /**
+    129            * @brief Initialize the RS485 Driver enable feature according to the specified
+    130            *         parameters in the UART_InitTypeDef and creates the associated handle.
+    131            * @param huart            UART handle.
+    132            * @param Polarity         Select the driver enable polarity.
+    133            *          This parameter can be one of the following values:
+    134            *          @arg @ref UART_DE_POLARITY_HIGH DE signal is active high
+    135            *          @arg @ref UART_DE_POLARITY_LOW  DE signal is active low
+    136            * @param AssertionTime    Driver Enable assertion time:
+    137            *       5-bit value defining the time between the activation of the DE (Driver Enable)
+    138            *       signal and the beginning of the start bit. It is expressed in sample time
+    139            *       units (1/8 or 1/16 bit time, depending on the oversampling rate)
+    140            * @param DeassertionTime  Driver Enable deassertion time:
+    141            *       5-bit value defining the time between the end of the last stop bit, in a
+    142            *       transmitted message, and the de-activation of the DE (Driver Enable) signal.
+    143            *       It is expressed in sample time units (1/8 or 1/16 bit time, depending on the
+    144            *       oversampling rate).
+    145            * @retval HAL status
+    146            */
+
+   \                                 In section .text, align 2, keep-with-next
+    147          HAL_StatusTypeDef HAL_RS485Ex_Init(UART_HandleTypeDef *huart, uint32_t Polarity, uint32_t AssertionTime, uint32_t DeassertionTime)
+    148          {
+   \                     HAL_RS485Ex_Init: (+1)
+   \        0x0   0xE92D 0x41F0      PUSH     {R4-R8,LR}
+   \        0x4   0x0004             MOVS     R4,R0
+   \        0x6   0x460D             MOV      R5,R1
+   \        0x8   0x4616             MOV      R6,R2
+   \        0xA   0x4698             MOV      R8,R3
+    149            uint32_t temp;
+    150          
+    151            /* Check the UART handle allocation */
+    152            if (huart == NULL)
+   \        0xC   0xD014             BEQ.N    ??HAL_RS485Ex_Init_0
+    153            {
+    154              return HAL_ERROR;
+    155            }
+    156            /* Check the Driver Enable UART instance */
+    157            assert_param(IS_UART_DRIVER_ENABLE_INSTANCE(huart->Instance));
+    158          
+    159            /* Check the Driver Enable polarity */
+    160            assert_param(IS_UART_DE_POLARITY(Polarity));
+    161          
+    162            /* Check the Driver Enable assertion time */
+    163            assert_param(IS_UART_ASSERTIONTIME(AssertionTime));
+    164          
+    165            /* Check the Driver Enable deassertion time */
+    166            assert_param(IS_UART_DEASSERTIONTIME(DeassertionTime));
+    167          
+    168            if (huart->gState == HAL_UART_STATE_RESET)
+   \        0xE   0xF104 0x0770      ADD      R7,R4,#+112
+   \       0x12   0x6879             LDR      R1,[R7, #+4]
+   \       0x14   0xB921             CBNZ.N   R1,??HAL_RS485Ex_Init_1
+    169            {
+    170              /* Allocate lock resource and initialize it */
+    171              huart->Lock = HAL_UNLOCKED;
+   \       0x16   0x2000             MOVS     R0,#+0
+   \       0x18   0x7038             STRB     R0,[R7, #+0]
+    172          
+    173          #if (USE_HAL_UART_REGISTER_CALLBACKS == 1)
+    174              UART_InitCallbacksToDefault(huart);
+    175          
+    176              if (huart->MspInitCallback == NULL)
+    177              {
+    178                huart->MspInitCallback = HAL_UART_MspInit;
+    179              }
+    180          
+    181              /* Init the low level hardware */
+    182              huart->MspInitCallback(huart);
+    183          #else
+    184              /* Init the low level hardware : GPIO, CLOCK, CORTEX */
+    185              HAL_UART_MspInit(huart);
+   \       0x1A   0x4620             MOV      R0,R4
+   \       0x1C   0x.... 0x....      BL       HAL_UART_MspInit
+    186          #endif /* (USE_HAL_UART_REGISTER_CALLBACKS) */
+    187            }
+    188          
+    189            huart->gState = HAL_UART_STATE_BUSY;
+   \                     ??HAL_RS485Ex_Init_1: (+1)
+   \       0x20   0x2124             MOVS     R1,#+36
+   \       0x22   0x6079             STR      R1,[R7, #+4]
+    190          
+    191            /* Disable the Peripheral */
+    192            __HAL_UART_DISABLE(huart);
+   \       0x24   0x6820             LDR      R0,[R4, #+0]
+   \       0x26   0x6802             LDR      R2,[R0, #+0]
+   \       0x28   0x0852             LSRS     R2,R2,#+1
+   \       0x2A   0x0052             LSLS     R2,R2,#+1
+   \       0x2C   0x6002             STR      R2,[R0, #+0]
+    193          
+    194            /* Set the UART Communication parameters */
+    195            if (UART_SetConfig(huart) == HAL_ERROR)
+   \       0x2E   0x4620             MOV      R0,R4
+   \       0x30   0x.... 0x....      BL       UART_SetConfig
+   \       0x34   0x2801             CMP      R0,#+1
+   \       0x36   0xD101             BNE.N    ??HAL_RS485Ex_Init_2
+    196            {
+    197              return HAL_ERROR;
+   \                     ??HAL_RS485Ex_Init_0: (+1)
+   \       0x38   0x2001             MOVS     R0,#+1
+   \       0x3A   0xE022             B.N      ??HAL_RS485Ex_Init_3
+    198            }
+    199          
+    200            if (huart->AdvancedInit.AdvFeatureInit != UART_ADVFEATURE_NO_INIT)
+   \                     ??HAL_RS485Ex_Init_2: (+1)
+   \       0x3C   0x6A60             LDR      R0,[R4, #+36]
+   \       0x3E   0xB110             CBZ.N    R0,??HAL_RS485Ex_Init_4
+    201            {
+    202              UART_AdvFeatureConfig(huart);
+   \       0x40   0x4620             MOV      R0,R4
+   \       0x42   0x.... 0x....      BL       UART_AdvFeatureConfig
+    203            }
+    204          
+    205            /* Enable the Driver Enable mode by setting the DEM bit in the CR3 register */
+    206            SET_BIT(huart->Instance->CR3, USART_CR3_DEM);
+   \                     ??HAL_RS485Ex_Init_4: (+1)
+   \       0x46   0x6820             LDR      R0,[R4, #+0]
+   \       0x48   0x6881             LDR      R1,[R0, #+8]
+   \       0x4A   0xF441 0x4180      ORR      R1,R1,#0x4000
+   \       0x4E   0x6081             STR      R1,[R0, #+8]
+    207          
+    208            /* Set the Driver Enable polarity */
+    209            MODIFY_REG(huart->Instance->CR3, USART_CR3_DEP, Polarity);
+   \       0x50   0x6820             LDR      R0,[R4, #+0]
+   \       0x52   0x6882             LDR      R2,[R0, #+8]
+   \       0x54   0xF422 0x4200      BIC      R2,R2,#0x8000
+   \       0x58   0x4315             ORRS     R5,R5,R2
+   \       0x5A   0x6085             STR      R5,[R0, #+8]
+    210          
+    211            /* Set the Driver Enable assertion and deassertion times */
+    212            temp = (AssertionTime << UART_CR1_DEAT_ADDRESS_LSB_POS);
+    213            temp |= (DeassertionTime << UART_CR1_DEDT_ADDRESS_LSB_POS);
+    214            MODIFY_REG(huart->Instance->CR1, (USART_CR1_DEDT | USART_CR1_DEAT), temp);
+   \       0x5C   0x6820             LDR      R0,[R4, #+0]
+   \       0x5E   0x6801             LDR      R1,[R0, #+0]
+   \       0x60   0xF36F 0x4119      BFC      R1,#+16,#+10
+   \       0x64   0xEA41 0x5146      ORR      R1,R1,R6, LSL #+21
+   \       0x68   0xEA41 0x4108      ORR      R1,R1,R8, LSL #+16
+   \       0x6C   0x6001             STR      R1,[R0, #+0]
+    215          
+    216            /* Enable the Peripheral */
+    217            __HAL_UART_ENABLE(huart);
+   \       0x6E   0x6820             LDR      R0,[R4, #+0]
+   \       0x70   0x6802             LDR      R2,[R0, #+0]
+   \       0x72   0xF042 0x0201      ORR      R2,R2,#0x1
+   \       0x76   0x6002             STR      R2,[R0, #+0]
+    218          
+    219            /* TEACK and/or REACK to check before moving huart->gState and huart->RxState to Ready */
+    220            return (UART_CheckIdleState(huart));
+   \       0x78   0x4620             MOV      R0,R4
+   \       0x7A   0xE8BD 0x41F0      POP      {R4-R8,LR}
+   \       0x7E   0x.... 0x....      B.W      UART_CheckIdleState
+   \                     ??HAL_RS485Ex_Init_3: (+1)
+   \       0x82   0xE8BD 0x81F0      POP      {R4-R8,PC}       ;; return
+    221          }
+    222          
+    223          /**
+    224            * @}
+    225            */
+    226          
+    227          /** @defgroup UARTEx_Exported_Functions_Group2 IO operation functions
+    228            *  @brief Extended functions
+    229            *
+    230          @verbatim
+    231           ===============================================================================
+    232                                ##### IO operation functions #####
+    233           ===============================================================================
+    234              This subsection provides a set of Wakeup and FIFO mode related callback functions.
+    235          
+    236          @endverbatim
+    237            * @{
+    238            */
+    239          
+    240          
+    241          /**
+    242            * @}
+    243            */
+    244          
+    245          /** @defgroup UARTEx_Exported_Functions_Group3 Peripheral Control functions
+    246            * @brief    Extended Peripheral Control functions
+    247           *
+    248          @verbatim
+    249           ===============================================================================
+    250                                ##### Peripheral Control functions #####
+    251           ===============================================================================
+    252              [..] This section provides the following functions:
+    253               (+) HAL_MultiProcessorEx_AddressLength_Set() API optionally sets the UART node address
+    254                   detection length to more than 4 bits for multiprocessor address mark wake up.
+    255          
+    256          @endverbatim
+    257            * @{
+    258            */
+    259          
+    260          
+    261          
+    262          
+    263          /**
+    264            * @brief By default in multiprocessor mode, when the wake up method is set
+    265            *        to address mark, the UART handles only 4-bit long addresses detection;
+    266            *        this API allows to enable longer addresses detection (6-, 7- or 8-bit
+    267            *        long).
+    268            * @note  Addresses detection lengths are: 6-bit address detection in 7-bit data mode,
+    269            *        7-bit address detection in 8-bit data mode, 8-bit address detection in 9-bit data mode.
+    270            * @param huart         UART handle.
+    271            * @param AddressLength This parameter can be one of the following values:
+    272            *          @arg @ref UART_ADDRESS_DETECT_4B 4-bit long address
+    273            *          @arg @ref UART_ADDRESS_DETECT_7B 6-, 7- or 8-bit long address
+    274            * @retval HAL status
+    275            */
+
+   \                                 In section .text, align 2, keep-with-next
+    276          HAL_StatusTypeDef HAL_MultiProcessorEx_AddressLength_Set(UART_HandleTypeDef *huart, uint32_t AddressLength)
+    277          {
+   \                     HAL_MultiProcessorEx_AddressLength_Set: (+1)
+   \        0x0   0xB510             PUSH     {R4,LR}
+    278            /* Check the UART handle allocation */
+    279            if (huart == NULL)
+   \        0x2   0xB908             CBNZ.N   R0,??HAL_MultiProcessorEx_AddressLength_Set_0
+    280            {
+    281              return HAL_ERROR;
+   \        0x4   0x2001             MOVS     R0,#+1
+   \        0x6   0xBD10             POP      {R4,PC}
+    282            }
+    283          
+    284            /* Check the address length parameter */
+    285            assert_param(IS_UART_ADDRESSLENGTH_DETECT(AddressLength));
+    286          
+    287            huart->gState = HAL_UART_STATE_BUSY;
+   \                     ??HAL_MultiProcessorEx_AddressLength_Set_0: (+1)
+   \        0x8   0x2224             MOVS     R2,#+36
+   \        0xA   0x6742             STR      R2,[R0, #+116]
+    288          
+    289            /* Disable the Peripheral */
+    290            __HAL_UART_DISABLE(huart);
+   \        0xC   0x6802             LDR      R2,[R0, #+0]
+   \        0xE   0x6813             LDR      R3,[R2, #+0]
+   \       0x10   0x085B             LSRS     R3,R3,#+1
+   \       0x12   0x005B             LSLS     R3,R3,#+1
+   \       0x14   0x6013             STR      R3,[R2, #+0]
+    291          
+    292            /* Set the address length */
+    293            MODIFY_REG(huart->Instance->CR2, USART_CR2_ADDM7, AddressLength);
+   \       0x16   0x6802             LDR      R2,[R0, #+0]
+   \       0x18   0x6854             LDR      R4,[R2, #+4]
+   \       0x1A   0xF024 0x0410      BIC      R4,R4,#0x10
+   \       0x1E   0x4321             ORRS     R1,R1,R4
+   \       0x20   0x6051             STR      R1,[R2, #+4]
+    294          
+    295            /* Enable the Peripheral */
+    296            __HAL_UART_ENABLE(huart);
+   \       0x22   0x6801             LDR      R1,[R0, #+0]
+   \       0x24   0x680A             LDR      R2,[R1, #+0]
+   \       0x26   0xF042 0x0201      ORR      R2,R2,#0x1
+   \       0x2A   0x600A             STR      R2,[R1, #+0]
+    297          
+    298            /* TEACK and/or REACK to check before moving huart->gState to Ready */
+    299            return (UART_CheckIdleState(huart));
+   \       0x2C   0xE8BD 0x4010      POP      {R4,LR}
+   \       0x30   0x.... 0x....      B.W      UART_CheckIdleState
+    300          }
+    301          
+    302          
+    303          
+    304          /**
+    305            * @}
+    306            */
+    307          
+    308          /**
+    309            * @}
+    310            */
+    311          
+    312          /** @addtogroup UARTEx_Private_Functions
+    313            * @{
+    314            */
+    315          
+    316          /**
+    317            * @}
+    318            */
+    319          
+    320          #endif /* HAL_UART_MODULE_ENABLED */
+    321          
+    322          /**
+    323            * @}
+    324            */
+    325          
+    326          /**
+    327            * @}
+    328            */
+    329          
+    330          /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   HAL_MultiProcessorEx_AddressLength_Set
+         0   -> UART_CheckIdleState
+      24   HAL_RS485Ex_Init
+        24   -> HAL_UART_MspInit
+        24   -> UART_AdvFeatureConfig
+         0   -> UART_CheckIdleState
+        24   -> UART_SetConfig
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      52  HAL_MultiProcessorEx_AddressLength_Set
+     134  HAL_RS485Ex_Init
+
+ 
+ 186 bytes in section .text
+ 
+ 186 bytes of CODE memory
+
+Errors: none
+Warnings: none

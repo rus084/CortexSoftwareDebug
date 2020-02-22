@@ -1,0 +1,23 @@
+"--endian=little" 
+
+"--cpu=Cortex-M7" 
+
+"--fpu=VFPv5_SP" 
+
+"-p" 
+
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\arm\CONFIG\debugger\ST\STM32F723IE.ddf" 
+
+"--drv_verify_download" 
+
+"--semihosting" 
+
+"--device=STM32F723IE" 
+
+"--drv_communication=TCPIP:127.0.0.1" 
+
+"--drv_default_breakpoint=1" 
+
+
+
+
