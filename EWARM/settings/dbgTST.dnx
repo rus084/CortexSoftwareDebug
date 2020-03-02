@@ -20,7 +20,7 @@
         <LeaveTargetRunning>_ 0</LeaveTargetRunning>
     </StLinkDriver>
     <DebugChecksum>
-        <Checksum>3569728583</Checksum>
+        <Checksum>1372277668</Checksum>
     </DebugChecksum>
     <Exceptions>
         <StopOnUncaught>_ 0</StopOnUncaught>
@@ -30,8 +30,8 @@
         <ShowArgs>0</ShowArgs>
     </CallStack>
     <Disassembly>
-        <InstrCount>0</InstrCount>
         <MixedMode>1</MixedMode>
+        <InstrCount>0</InstrCount>
     </Disassembly>
     <CodeCoverage>
         <Enabled>_ 0</Enabled>
@@ -54,23 +54,25 @@
         <ITMportsLogFile>0</ITMportsLogFile>
         <ITMlogFile>$PROJ_DIR$\ITM.log</ITMlogFile>
     </SWOTraceHWSettings>
-    <struct_types>
-        <Fmt0>exceptionFrame_t-LR	4	0</Fmt0>
-        <Fmt1>exceptionFrame_t-PC	4	0</Fmt1>
-        <Fmt2>exceptionFrame_t-R0	4	0</Fmt2>
-        <Fmt3>exceptionFrame_t-R1	4	0</Fmt3>
-        <Fmt4>exceptionFrame_t-R12	4	0</Fmt4>
-        <Fmt5>exceptionFrame_t-R2	4	0</Fmt5>
-        <Fmt6>exceptionFrame_t-R3	4	0</Fmt6>
-        <Fmt7>exceptionFrame_t-reserved	4	0</Fmt7>
-        <Fmt8>exceptionFrame_t-xPSR	4	0</Fmt8>
-    </struct_types>
-    <array_types>
-        <Fmt0>uint32_t[8]	4	0</Fmt0>
-    </array_types>
-    <watch_formats>
-        <Fmt0>{W}42:(dbg_t*)0x20001000	4	0</Fmt0>
-    </watch_formats>
+    <Trace1>
+        <Enabled>0</Enabled>
+        <ShowSource>1</ShowSource>
+    </Trace1>
+    <Interrupts>
+        <Enabled>1</Enabled>
+    </Interrupts>
+    <MemConfig>
+        <Base>1</Base>
+        <Manual>0</Manual>
+        <Ddf>1</Ddf>
+        <TypeViol>0</TypeViol>
+        <Stop>1</Stop>
+    </MemConfig>
+    <Simulator>
+        <Freq>10000000</Freq>
+        <FreqHi>0</FreqHi>
+        <MultiCoreRunAll>1</MultiCoreRunAll>
+    </Simulator>
     <Trace2>
         <Enabled>0</Enabled>
         <ShowSource>0</ShowSource>
@@ -130,19 +132,35 @@
         <ShowTiming>1</ShowTiming>
     </CallStackStripe>
     <Breakpoints2>
-        <Bp0>_ 1 "EMUL_CODE" "{$PROJ_DIR$\dbgC.c}.112.3" 0 0 1 "" 0 "" 0</Bp0>
-        <Count>1</Count>
+        <Count>0</Count>
     </Breakpoints2>
-    <TermIOLog>
-        <LoggingEnabled>_ 0</LoggingEnabled>
-        <LogFile>_ ""</LogFile>
-    </TermIOLog>
+    <struct_types>
+        <Fmt0>exceptionFrame_t-LR	4	0</Fmt0>
+        <Fmt1>exceptionFrame_t-PC	4	0</Fmt1>
+        <Fmt2>exceptionFrame_t-R0	4	0</Fmt2>
+        <Fmt3>exceptionFrame_t-R1	4	0</Fmt3>
+        <Fmt4>exceptionFrame_t-R12	4	0</Fmt4>
+        <Fmt5>exceptionFrame_t-R2	4	0</Fmt5>
+        <Fmt6>exceptionFrame_t-R3	4	0</Fmt6>
+        <Fmt7>exceptionFrame_t-reserved	4	0</Fmt7>
+        <Fmt8>exceptionFrame_t-xPSR	4	0</Fmt8>
+    </struct_types>
+    <array_types>
+        <Fmt0>uint32_t[8]	4	0</Fmt0>
+    </array_types>
+    <watch_formats>
+        <Fmt0>{W}42:(dbg_t*)0x20001000	4	0</Fmt0>
+    </watch_formats>
     <DisassembleMode>
         <mode>0</mode>
     </DisassembleMode>
     <Breakpoints>
         <Count>0</Count>
     </Breakpoints>
+    <TermIOLog>
+        <LoggingEnabled>_ 0</LoggingEnabled>
+        <LogFile>_ ""</LogFile>
+    </TermIOLog>
     <LogFile>
         <LoggingEnabled>_ 0</LoggingEnabled>
         <LogFile>_ ""</LogFile>

@@ -1,28 +1,27 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM        17/Feb/2020  22:44:27
+// IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM        24/Feb/2020  12:11:59
 // Copyright 1999-2018 IAR Systems AB.
 //
 //    Cpu mode     =  thumb
 //    Endian       =  little
-//    Source file  =  D:\win10\f7dbg\dbgTST\Src\main.c
+//    Source file  =  D:\win10\f7dbg\git\Src\main.c
 //    Command line =  
-//        -f C:\Users\rus08\AppData\Local\Temp\EW9F49.tmp
-//        (D:\win10\f7dbg\dbgTST\Src\main.c -D USE_HAL_DRIVER -D STM32F723xx
-//        -lC D:\win10\f7dbg\dbgTST\EWARM\dbgTST\List -lA
-//        D:\win10\f7dbg\dbgTST\EWARM\dbgTST\List -o
-//        D:\win10\f7dbg\dbgTST\EWARM\dbgTST\Obj --debug --endian=little
+//        -f C:\Users\rus08\AppData\Local\Temp\EWFE06.tmp
+//        (D:\win10\f7dbg\git\Src\main.c -D USE_HAL_DRIVER -D STM32F723xx -lC
+//        D:\win10\f7dbg\git\EWARM\dbgTST\List -lA
+//        D:\win10\f7dbg\git\EWARM\dbgTST\List -o
+//        D:\win10\f7dbg\git\EWARM\dbgTST\Obj --debug --endian=little
 //        --cpu=Cortex-M7 -e --fpu=VFPv5_sp --dlib_config "C:\Program Files
 //        (x86)\IAR Systems\Embedded Workbench
-//        8.1\arm\inc\c\DLib_Config_Full.h" -I
-//        D:\win10\f7dbg\dbgTST\EWARM/../Inc\ -I
-//        D:\win10\f7dbg\dbgTST\EWARM/../Drivers/STM32F7xx_HAL_Driver/Inc\ -I
-//        D:\win10\f7dbg\dbgTST\EWARM/../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy\
+//        8.1\arm\inc\c\DLib_Config_Full.h" -I D:\win10\f7dbg\git\EWARM/../Inc\
+//        -I D:\win10\f7dbg\git\EWARM/../Drivers/STM32F7xx_HAL_Driver/Inc\ -I
+//        D:\win10\f7dbg\git\EWARM/../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy\
 //        -I
-//        D:\win10\f7dbg\dbgTST\EWARM/../Drivers/CMSIS/Device/ST/STM32F7xx/Include\
-//        -I D:\win10\f7dbg\dbgTST\EWARM/../Drivers/CMSIS/Include\ -Ohz)
+//        D:\win10\f7dbg\git\EWARM/../Drivers/CMSIS/Device/ST/STM32F7xx/Include\
+//        -I D:\win10\f7dbg\git\EWARM/../Drivers/CMSIS/Include\ -Ohz)
 //    Locale       =  C
-//    List file    =  D:\win10\f7dbg\dbgTST\EWARM\dbgTST\List\main.s
+//    List file    =  D:\win10\f7dbg\git\EWARM\dbgTST\List\main.s
 //
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -95,7 +94,7 @@
           CFI D15 SameValue
           CFI EndCommon cfiCommon0
         
-// D:\win10\f7dbg\dbgTST\Src\main.c
+// D:\win10\f7dbg\git\Src\main.c
 //    1 /* USER CODE BEGIN Header */
 //    2 /**
 //    3   ******************************************************************************

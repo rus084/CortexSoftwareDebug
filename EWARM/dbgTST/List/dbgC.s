@@ -1,28 +1,27 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM        22/Feb/2020  20:32:02
+// IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM        02/Mar/2020  19:27:57
 // Copyright 1999-2018 IAR Systems AB.
 //
 //    Cpu mode     =  thumb
 //    Endian       =  little
-//    Source file  =  D:\win10\f7dbg\dbgTST\EWARM\dbgC.c
+//    Source file  =  D:\win10\f7dbg\git\EWARM\dbgC.c
 //    Command line =  
-//        -f C:\Users\rus08\AppData\Local\Temp\EW235F.tmp
-//        (D:\win10\f7dbg\dbgTST\EWARM\dbgC.c -D USE_HAL_DRIVER -D STM32F723xx
-//        -lC D:\win10\f7dbg\dbgTST\EWARM\dbgTST\List -lA
-//        D:\win10\f7dbg\dbgTST\EWARM\dbgTST\List -o
-//        D:\win10\f7dbg\dbgTST\EWARM\dbgTST\Obj --debug --endian=little
+//        -f C:\Users\rus08\AppData\Local\Temp\EW6A18.tmp
+//        (D:\win10\f7dbg\git\EWARM\dbgC.c -D USE_HAL_DRIVER -D STM32F723xx -lC
+//        D:\win10\f7dbg\git\EWARM\dbgTST\List -lA
+//        D:\win10\f7dbg\git\EWARM\dbgTST\List -o
+//        D:\win10\f7dbg\git\EWARM\dbgTST\Obj --debug --endian=little
 //        --cpu=Cortex-M7 -e --fpu=VFPv5_sp --dlib_config "C:\Program Files
 //        (x86)\IAR Systems\Embedded Workbench
-//        8.1\arm\inc\c\DLib_Config_Full.h" -I
-//        D:\win10\f7dbg\dbgTST\EWARM/../Inc\ -I
-//        D:\win10\f7dbg\dbgTST\EWARM/../Drivers/STM32F7xx_HAL_Driver/Inc\ -I
-//        D:\win10\f7dbg\dbgTST\EWARM/../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy\
+//        8.1\arm\inc\c\DLib_Config_Full.h" -I D:\win10\f7dbg\git\EWARM/../Inc\
+//        -I D:\win10\f7dbg\git\EWARM/../Drivers/STM32F7xx_HAL_Driver/Inc\ -I
+//        D:\win10\f7dbg\git\EWARM/../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy\
 //        -I
-//        D:\win10\f7dbg\dbgTST\EWARM/../Drivers/CMSIS/Device/ST/STM32F7xx/Include\
-//        -I D:\win10\f7dbg\dbgTST\EWARM/../Drivers/CMSIS/Include\ -Ohz)
+//        D:\win10\f7dbg\git\EWARM/../Drivers/CMSIS/Device/ST/STM32F7xx/Include\
+//        -I D:\win10\f7dbg\git\EWARM/../Drivers/CMSIS/Include\ -Ohz)
 //    Locale       =  C
-//    List file    =  D:\win10\f7dbg\dbgTST\EWARM\dbgTST\List\dbgC.s
+//    List file    =  D:\win10\f7dbg\git\EWARM\dbgTST\List\dbgC.s
 //
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -84,7 +83,7 @@
           CFI D15 SameValue
           CFI EndCommon cfiCommon0
         
-// D:\win10\f7dbg\dbgTST\EWARM\dbgC.c
+// D:\win10\f7dbg\git\EWARM\dbgC.c
 //    1 #include "stdint.h"
 //    2 #include "stm32f7xx.h"
 //    3 
@@ -158,20 +157,19 @@
 //   71   uint8_t pos; // receive/send position
 //   72   uint8_t buf[128];
 //   73   uint8_t txCnt; // size of send data
-//   74   uint32_t SetBkpt;
-//   75   uint8_t BkptNum;
-//   76 } dbg_t;
-//   77 
-//   78 #define dbgG ((dbg_t*)DBG_ADDR)
-//   79 
+//   74   uint32_t NVICISER[3];
+//   75 } dbg_t;
+//   76 
+//   77 #define dbgG ((dbg_t*)DBG_ADDR)
+//   78 
 
         SECTION `.text`:CODE:NOROOT(1)
           CFI Block cfiBlock0 Using cfiCommon0
           CFI Function memcpySafe
           CFI NoCalls
         THUMB
-//   80 int memcpySafe(uint8_t* to,uint8_t* from, int len)
-//   81 {
+//   79 int memcpySafe(uint8_t* to,uint8_t* from, int len)
+//   80 {
 memcpySafe:
         PUSH     {R4-R7,LR}
           CFI R14 Frame(CFA, -4)
@@ -180,194 +178,196 @@ memcpySafe:
           CFI R5 Frame(CFA, -16)
           CFI R4 Frame(CFA, -20)
           CFI CFA R13+20
-//   82     /* Cortex-M3, Cortex-M4, Cortex-M4F, Cortex-M7 are supported */
-//   83     static const uint32_t BFARVALID_MASK = (0x80 << SCB_CFSR_BUSFAULTSR_Pos);
-//   84     int cnt = 0;
-//   85 
-//   86     /* Clear BFARVALID flag by writing 1 to it */
-//   87     SCB->CFSR |= BFARVALID_MASK;
+//   81     /* Cortex-M3, Cortex-M4, Cortex-M4F, Cortex-M7 are supported */
+//   82     static const uint32_t BFARVALID_MASK = (0x80 << SCB_CFSR_BUSFAULTSR_Pos);
+//   83     int cnt = 0;
+//   84 
+//   85     /* Clear BFARVALID flag by writing 1 to it */
+//   86     SCB->CFSR |= BFARVALID_MASK;
         LDR.N    R4,??DataTable2  ;; 0xe000ed14
         MOV      R3,R0
         LDR      R5,[R4, #+20]
         MOVS     R0,#+0
         ORR      R5,R5,#0x8000
         STR      R5,[R4, #+20]
-//   88 
-//   89     /* Ignore BusFault by enabling BFHFNMIGN and disabling interrupts */
-//   90     uint32_t mask = __get_FAULTMASK();
+//   87 
+//   88     /* Ignore BusFault by enabling BFHFNMIGN and disabling interrupts */
+//   89     uint32_t mask = __get_FAULTMASK();
         MRS      R5,FAULTMASK
-//   91     __disable_fault_irq();
+//   90     __disable_fault_irq();
         CPSID    F
-//   92     SCB->CCR |= SCB_CCR_BFHFNMIGN_Msk;
+//   91     SCB->CCR |= SCB_CCR_BFHFNMIGN_Msk;
         LDR      R6,[R4, #+0]
         ORR      R6,R6,#0x100
         STR      R6,[R4, #+0]
         B.N      ??memcpySafe_0
-//   93 
-//   94     while ((cnt<len))
-//   95     {
-//   96       *(to++) = *(from++);
+//   92 
+//   93     while ((cnt<len))
+//   94     {
+//   95       *(to++) = *(from++);
 ??memcpySafe_1:
         LDRB     R7,[R1], #+1
-//   97       cnt++;
+//   96       cnt++;
         ADDS     R0,R0,#+1
         STRB     R7,[R3], #+1
-//   98     }
+//   97     }
 ??memcpySafe_0:
         CMP      R0,R2
         BLT.N    ??memcpySafe_1
-//   99 
-//  100     /* Reenable BusFault by clearing  BFHFNMIGN */
-//  101     SCB->CCR &= ~SCB_CCR_BFHFNMIGN_Msk;
+//   98 
+//   99     /* Reenable BusFault by clearing  BFHFNMIGN */
+//  100     SCB->CCR &= ~SCB_CCR_BFHFNMIGN_Msk;
         LDR      R1,[R4, #+0]
         BIC      R1,R1,#0x100
         STR      R1,[R4, #+0]
-//  102     __set_FAULTMASK(mask);
+//  101     __set_FAULTMASK(mask);
         MSR      FAULTMASK,R5
-//  103 
-//  104     return cnt;
+//  102 
+//  103     return cnt;
         POP      {R4-R7,PC}       ;; return
-//  105 }
+//  104 }
           CFI EndBlock cfiBlock0
-//  106 
+//  105 
 
         SECTION `.text`:CODE:NOROOT(2)
           CFI Block cfiBlock1 Using cfiCommon0
           CFI Function parseAnswer
         THUMB
-//  107 void parseAnswer(exceptionFrame_t* regList)
-//  108 {
+//  106 void parseAnswer(exceptionFrame_t* regList)
+//  107 {
 parseAnswer:
-        PUSH     {R3-R5,LR}
+        PUSH     {R4-R6,LR}
           CFI R14 Frame(CFA, -4)
-          CFI R5 Frame(CFA, -8)
-          CFI R4 Frame(CFA, -12)
+          CFI R6 Frame(CFA, -8)
+          CFI R5 Frame(CFA, -12)
+          CFI R4 Frame(CFA, -16)
           CFI CFA R13+16
-//  109   dbg_t* dbg = dbgG;
-//  110   uint32_t addr;
-//  111   uint32_t tmp;
-//  112   switch (dbg->buf[0])
-        LDR.N    R4,??DataTable2_1  ;; 0x20001000
-        LDR.N    R1,??DataTable2_2  ;; 0x20001008
-        LDRB     R5,[R4, #+3]
-        LDR.N    R2,??DataTable2_3  ;; 0xe0002008
-        LDR.N    R3,??DataTable2_4  ;; 0x20001003
-        SUBS     R5,R5,#+2
-        CMP      R5,#+7
-        BHI.N    ??parseAnswer_2
-        TBB      [PC, R5]
+//  108   dbg_t* dbg = dbgG;
+//  109   uint32_t addr;
+//  110   uint32_t tmp;
+//  111   switch (dbg->buf[0])
+        LDR.N    R5,??DataTable2_1  ;; 0x20001000
+        LDR.N    R4,??DataTable2_2  ;; 0x20001083
+        LDRB     R6,[R5, #+3]
+        LDR.N    R1,??DataTable2_3  ;; 0x20001008
+        LDR.N    R2,??DataTable2_4  ;; 0xe0002008
+        LDR.N    R3,??DataTable2_5  ;; 0x20001003
+        SUBS     R6,R6,#+2
+        CMP      R6,#+8
+        BHI.N    ??parseAnswer_3
+        TBB      [PC, R6]
         DATA
 ??parseAnswer_0:
-        DC8      0x9,0x13,0x1E,0x2D
-        DC8      0x34,0x67,0x82,0x94
+        DC8      0xA,0x14,0x1F,0x2C
+        DC8      0x33,0x67,0x82,0x94
+        DC8      0xAE,0x0
         THUMB
-//  113   {
-//  114   case 1:
-//  115   default:
-//  116     dbg->pos = 1;
-??parseAnswer_2:
-        MOVS     R0,#+1
-//  117     dbg->buf[0] = 0x33;
-        MOVS     R1,#+51
-        STRB     R0,[R4, #+2]
-        STRB     R1,[R3, #+0]
-//  118     break;
+//  112   {
+//  113   case 1:
+//  114   default:
+//  115     dbg->pos = 1;
 ??parseAnswer_3:
-        B.N      ??parseAnswer_4
-//  119   case 2:
-//  120     if (dbg->pos>4)
-??parseAnswer_5:
-        LDRB     R5,[R4, #+2]
-        CMP      R5,#+4
-        BLE.N    ??parseAnswer_3
-//  121     { // readMem
-//  122       addr = *(uint32_t*)(&dbg->buf[1]);
-//  123       uint8_t len = dbg->buf[5];
-//  124       dbg->pos = memcpySafe(dbg->buf,(uint8_t*) addr, len);
+        MOVS     R0,#+1
+//  116     dbg->buf[0] = 0x33;
+        MOVS     R1,#+51
+        STRB     R0,[R5, #+2]
+        STRB     R1,[R3, #+0]
+//  117     break;
+??parseAnswer_4:
+        B.N      ??parseAnswer_5
+//  118   case 2:
+//  119     if (dbg->pos>4)
+??parseAnswer_6:
+        LDRB     R6,[R5, #+2]
+        CMP      R6,#+4
+        BLE.N    ??parseAnswer_4
+//  120     { // readMem
+//  121       addr = *(uint32_t*)(&dbg->buf[1]);
+//  122       uint8_t len = dbg->buf[5];
+//  123       dbg->pos = memcpySafe(dbg->buf,(uint8_t*) addr, len);
         LDRB     R2,[R1, #+0]
         LDR      R1,[R3, #+1]
         MOV      R0,R3
           CFI FunCall memcpySafe
         BL       memcpySafe
-        B.N      ??parseAnswer_6
-//  125     }
-//  126     break;
-//  127   case 3:
-//  128     if (dbg->pos>5)
-??parseAnswer_7:
-        LDRB     R0,[R4, #+2]
+        B.N      ??parseAnswer_7
+//  124     }
+//  125     break;
+//  126   case 3:
+//  127     if (dbg->pos>5)
+??parseAnswer_8:
+        LDRB     R0,[R5, #+2]
         CMP      R0,#+5
-        BLE.N    ??parseAnswer_3
-//  129     { // writeMem
-//  130       addr = *(uint32_t*)(&dbg->buf[1]);
-//  131       uint8_t len = dbg->pos-5;
-//  132       memcpySafe((uint8_t*)addr,&dbg->buf[5],len);
+        BLE.N    ??parseAnswer_4
+//  128     { // writeMem
+//  129       addr = *(uint32_t*)(&dbg->buf[1]);
+//  130       uint8_t len = dbg->pos-5;
+//  131       memcpySafe((uint8_t*)addr,&dbg->buf[5],len);
         SUBS     R2,R0,#+5
         LDR      R0,[R3, #+1]
         UXTB     R2,R2
           CFI FunCall memcpySafe
         BL       memcpySafe
-//  133       dbg->pos = 1;
+//  132       dbg->pos = 1;
         MOVS     R0,#+1
-        B.N      ??parseAnswer_6
-//  134     }
-//  135     break;
-//  136   case 4: // stop target
-//  137     dbg->pos = 0;
-??parseAnswer_8:
+        B.N      ??parseAnswer_7
+//  133     }
+//  134     break;
+//  135   case 4: // stop target
+//  136     dbg->pos = 0;
+??parseAnswer_9:
         MOVS     R1,#+0
-        STRB     R1,[R4, #+2]
-//  138     if (dbg->StopProgramm)
-        LDR      R2,[R4, #+0]
+        STRB     R1,[R5, #+2]
+//  137     if (dbg->StopProgramm)
+        LDR      R2,[R5, #+0]
         UBFX     R1,R2,#+1,#+1
         CMP      R1,#+0
-        BNE.N    ??parseAnswer_4
-//  139       break;
-//  140     addr = regList->PC;
-//  141     FP->FP_COMP[5] = (addr&0xFFFFFFFE) | 1;
+        BNE.N    ??parseAnswer_10
+//  138       break;
+//  139     addr = regList->PC;
+//  140     FP->FP_COMP[5] = (addr&0xFFFFFFFE) | 1;
         LDR      R0,[R0, #+60]
-        LDR.N    R1,??DataTable2_5  ;; 0xe000201c
-//  142     dbg->pos = 0;
-        MOVS     R2,#+0
-        STRB     R2,[R4, #+2]
+        LDR.N    R1,??DataTable2_6  ;; 0xe000201c
         ORR      R0,R0,#0x1
         STR      R0,[R1, #+0]
-//  143     break;
-        B.N      ??parseAnswer_4
-//  144   case 5: // continue execution
-//  145     
-//  146     addr = __get_MSP();
-//  147     addr = (*(uint32_t*)(addr+0x28)) | 1;
-//  148     /*
-//  149     for (tmp=0;tmp<NUMOFBKPTS;tmp++)
-//  150     {
-//  151       if (FP->FP_COMP[tmp]==addr)
-//  152       {
-//  153         dbg->SetBkpt = addr;
-//  154         dbg->BkptNum = tmp;
-//  155         FP->FP_COMP[tmp] = 0;
-//  156       }
-//  157     }
-//  158     
-//  159     if (tmp!=NUMOFBKPTS)
-//  160       DEMCR|=1<<18; // step the core
-//  161     */
-//  162     dbg->StopProgramm = 0;
-??parseAnswer_9:
-        LDR      R0,[R4, #+0]
-//  163     dbg->pos = 0;
+//  141     dbg->pos = 0;
+        B.N      ??parseAnswer_11
+//  142     break;
+//  143   case 5: // continue execution
+//  144     /*
+//  145     addr = regList->PC | 1;
+//  146     
+//  147     for (tmp=0;tmp<NUMOFBKPTS;tmp++)
+//  148     {
+//  149       if (FP->FP_COMP[tmp]==addr)
+//  150       {
+//  151         dbg->SetBkpt = addr;
+//  152         dbg->BkptNum = tmp;
+//  153         FP->FP_COMP[tmp] = 0;
+//  154         
+//  155         DEMCR|=1<<18; // step the core
+//  156         __disable_irq(); // because step exception occured in interrupt
+//  157         break;
+//  158       }
+//  159     }
+//  160     */
+//  161     dbg->StopProgramm = 0;
+??parseAnswer_12:
+        LDR      R0,[R5, #+0]
+//  162     dbg->pos = 0;
         MOVS     R1,#+0
         BIC      R0,R0,#0x2
-        STR      R0,[R4, #+0]
-        STRB     R1,[R4, #+2]
-//  164     break;
-        B.N      ??parseAnswer_4
-//  165   case 6: // read regs
-//  166     switch (dbg->buf[1])
+        STR      R0,[R5, #+0]
+        STRB     R1,[R5, #+2]
+//  163     break;
 ??parseAnswer_10:
+        B.N      ??parseAnswer_5
+//  164   case 6: // read regs
+//  165     switch (dbg->buf[1])
+??parseAnswer_13:
         LDRB     R2,[R3, #+1]
         CMP      R2,#+16
-        BHI.N    ??parseAnswer_11
+        BHI.N    ??parseAnswer_14
         TBB      [PC, R2]
         DATA
 ??parseAnswer_1:
@@ -377,263 +377,409 @@ parseAnswer:
         DC8      0x21,0x2A,0x23,0x25
         DC8      0x27,0x0
         THUMB
-//  167     {
-//  168     case 0x00:
-//  169       addr = regList->R0;
-??parseAnswer_12:
-        LDR      R0,[R0, #+36]
-//  170       break;
-        B.N      ??parseAnswer_13
-//  171     case 0x01:
-//  172       addr = regList->R1;
-??parseAnswer_14:
-        LDR      R0,[R0, #+40]
-//  173       break;
-        B.N      ??parseAnswer_13
-//  174     case 0x02:
-//  175       addr = regList->R2;
+//  166     {
+//  167     case 0x00:
+//  168       addr = regList->R0;
 ??parseAnswer_15:
-        LDR      R0,[R0, #+44]
-//  176       break;
-        B.N      ??parseAnswer_13
-//  177     case 0x03:
-//  178       addr = regList->R3;
-??parseAnswer_16:
-        LDR      R0,[R0, #+48]
-//  179       break;
-        B.N      ??parseAnswer_13
-//  180     case 0x04:
-//  181       addr = regList->R4;
+        LDR      R0,[R0, #+36]
+//  169       break;
+        B.N      ??parseAnswer_16
+//  170     case 0x01:
+//  171       addr = regList->R1;
 ??parseAnswer_17:
-        LDR      R0,[R0, #+0]
-//  182       break;
-        B.N      ??parseAnswer_13
-//  183     case 0x05:
-//  184       addr = regList->R5;
+        LDR      R0,[R0, #+40]
+//  172       break;
+        B.N      ??parseAnswer_16
+//  173     case 0x02:
+//  174       addr = regList->R2;
 ??parseAnswer_18:
-        LDR      R0,[R0, #+4]
-//  185       break;
-        B.N      ??parseAnswer_13
-//  186     case 0x06:
-//  187       addr = regList->R6;
+        LDR      R0,[R0, #+44]
+//  175       break;
+        B.N      ??parseAnswer_16
+//  176     case 0x03:
+//  177       addr = regList->R3;
 ??parseAnswer_19:
-        LDR      R0,[R0, #+8]
-//  188       break;
-        B.N      ??parseAnswer_13
-//  189     case 0x07:
-//  190       addr = regList->R7;
+        LDR      R0,[R0, #+48]
+//  178       break;
+        B.N      ??parseAnswer_16
+//  179     case 0x04:
+//  180       addr = regList->R4;
 ??parseAnswer_20:
-        LDR      R0,[R0, #+12]
-//  191       break;
-        B.N      ??parseAnswer_13
-//  192     case 0x08:
-//  193       addr = regList->R8;
+        LDR      R0,[R0, #+0]
+//  181       break;
+        B.N      ??parseAnswer_16
+//  182     case 0x05:
+//  183       addr = regList->R5;
 ??parseAnswer_21:
-        LDR      R0,[R0, #+16]
-//  194       break;
-        B.N      ??parseAnswer_13
-//  195     case 0x09:
-//  196       addr = regList->R9;
+        LDR      R0,[R0, #+4]
+//  184       break;
+        B.N      ??parseAnswer_16
+//  185     case 0x06:
+//  186       addr = regList->R6;
 ??parseAnswer_22:
-        LDR      R0,[R0, #+20]
-//  197       break;
-        B.N      ??parseAnswer_13
-//  198     case 0x0A:
-//  199       addr = regList->R10;
+        LDR      R0,[R0, #+8]
+//  187       break;
+        B.N      ??parseAnswer_16
+//  188     case 0x07:
+//  189       addr = regList->R7;
 ??parseAnswer_23:
-        LDR      R0,[R0, #+24]
-//  200       break;
-        B.N      ??parseAnswer_13
-//  201     case 0x0B:
-//  202       addr = regList->R11;
+        LDR      R0,[R0, #+12]
+//  190       break;
+        B.N      ??parseAnswer_16
+//  191     case 0x08:
+//  192       addr = regList->R8;
 ??parseAnswer_24:
-        LDR      R0,[R0, #+28]
-//  203       break;
-        B.N      ??parseAnswer_13
-//  204     case 0x0C:
-//  205       addr = regList->R12;
+        LDR      R0,[R0, #+16]
+//  193       break;
+        B.N      ??parseAnswer_16
+//  194     case 0x09:
+//  195       addr = regList->R9;
 ??parseAnswer_25:
-        LDR      R0,[R0, #+52]
-//  206       break;
-        B.N      ??parseAnswer_13
-//  207     case 0x0D:
-//  208       addr = (uint32_t)regList; // sp
-//  209       break;
-//  210     case 0x0E:
-//  211       addr = regList->LR;
+        LDR      R0,[R0, #+20]
+//  196       break;
+        B.N      ??parseAnswer_16
+//  197     case 0x0A:
+//  198       addr = regList->R10;
 ??parseAnswer_26:
-        LDR      R0,[R0, #+56]
-//  212       break;
-        B.N      ??parseAnswer_13
-//  213     case 0x0F:
-//  214       addr = regList->PC;
+        LDR      R0,[R0, #+24]
+//  199       break;
+        B.N      ??parseAnswer_16
+//  200     case 0x0B:
+//  201       addr = regList->R11;
 ??parseAnswer_27:
-        LDR      R0,[R0, #+60]
-//  215       break;
-        B.N      ??parseAnswer_13
-//  216     case 0x10:
-//  217       addr = regList->xPSR;
+        LDR      R0,[R0, #+28]
+//  202       break;
+        B.N      ??parseAnswer_16
+//  203     case 0x0C:
+//  204       addr = regList->R12;
 ??parseAnswer_28:
-        LDR      R0,[R0, #+64]
-//  218       break;
-        B.N      ??parseAnswer_13
-//  219     default:
-//  220       addr = 0xDEADFACE;
-??parseAnswer_11:
-        LDR.N    R0,??DataTable2_6  ;; 0xdeadface
-//  221       break;
-//  222     }
-//  223     *(uint32_t*)(dbg->buf) = addr;
-??parseAnswer_13:
-        STR      R0,[R4, #+3]
-//  224     dbg->pos = 4;
-        MOVS     R0,#+4
-        B.N      ??parseAnswer_6
-//  225     break;
-//  226   case 7: // set bkpt
-//  227     dbg->pos = 0;
+        LDR      R0,[R0, #+52]
+//  205       break;
+        B.N      ??parseAnswer_16
+//  206     case 0x0D:
+//  207       addr = (uint32_t)regList; // sp
+//  208       break;
+//  209     case 0x0E:
+//  210       addr = regList->LR;
 ??parseAnswer_29:
+        LDR      R0,[R0, #+56]
+//  211       break;
+        B.N      ??parseAnswer_16
+//  212     case 0x0F:
+//  213       addr = regList->PC;
+??parseAnswer_30:
+        LDR      R0,[R0, #+60]
+//  214       break;
+        B.N      ??parseAnswer_16
+//  215     case 0x10:
+//  216       addr = regList->xPSR;
+??parseAnswer_31:
+        LDR      R0,[R0, #+64]
+//  217       break;
+        B.N      ??parseAnswer_16
+//  218     default:
+//  219       addr = 0xDEADFACE;
+??parseAnswer_14:
+        LDR.N    R0,??DataTable2_7  ;; 0xdeadface
+//  220       break;
+//  221     }
+//  222     *(uint32_t*)(dbg->buf) = addr;
+??parseAnswer_16:
+        STR      R0,[R5, #+3]
+//  223     dbg->pos = 4;
+        MOVS     R0,#+4
+??parseAnswer_7:
+        STRB     R0,[R5, #+2]
+//  224     break;
+        B.N      ??parseAnswer_5
+//  225   case 7: // set bkpt
+//  226     dbg->pos = 0;
+??parseAnswer_32:
         MOVS     R1,#+0
-//  228     addr = ((*(uint32_t*)(&dbg->buf[1])))|1;
-//  229     for (tmp = 0;tmp<8;tmp++)
+//  227     addr = ((*(uint32_t*)(&dbg->buf[1])))|1;
+//  228     for (tmp = 0;tmp<8;tmp++)
         MOVS     R0,#+0
-        STRB     R1,[R4, #+2]
+        STRB     R1,[R5, #+2]
         LDR      R1,[R3, #+1]
         ORR      R1,R1,#0x1
-//  230       if (FP->FP_COMP[tmp] == addr)
-??parseAnswer_30:
+//  229       if (FP->FP_COMP[tmp] == addr)
+??parseAnswer_33:
         LDR      R3,[R2, R0, LSL #+2]
         CMP      R3,R1
-        BEQ.N    ??parseAnswer_31
+        BEQ.N    ??parseAnswer_34
         ADDS     R0,R0,#+1
         CMP      R0,#+8
-        BCC.N    ??parseAnswer_30
-//  231         break;
-//  232     
-//  233     if (tmp!=8)
-??parseAnswer_31:
+        BCC.N    ??parseAnswer_33
+//  230         break;
+//  231     
+//  232     if (tmp!=8)
+??parseAnswer_34:
         CMP      R0,#+8
-        BNE.N    ??parseAnswer_4
-//  234       break;
-//  235     
-//  236     for (tmp=0;tmp<NUMOFBKPTS;tmp++)
+        BNE.N    ??parseAnswer_5
+//  233       break;
+//  234     
+//  235     for (tmp=0;tmp<NUMOFBKPTS;tmp++)
         MOVS     R3,#+0
-//  237       if (FP->FP_COMP[tmp]==0)
-??parseAnswer_32:
+//  236       if (FP->FP_COMP[tmp]==0)
+??parseAnswer_35:
         LDR      R0,[R2, R3, LSL #+2]
-        CBZ.N    R0,??parseAnswer_33
+        CBZ.N    R0,??parseAnswer_36
         ADDS     R3,R3,#+1
         CMP      R3,#+8
-        BCC.N    ??parseAnswer_32
-        B.N      ??parseAnswer_4
-//  238       {
-//  239         FP->FP_COMP[tmp] = addr;
-??parseAnswer_33:
+        BCC.N    ??parseAnswer_35
+        B.N      ??parseAnswer_5
+//  237       {
+//  238         FP->FP_COMP[tmp] = addr;
+??parseAnswer_36:
         STR      R1,[R2, R3, LSL #+2]
-//  240         break;
-        B.N      ??parseAnswer_4
-//  241       }
-//  242     break;
-//  243   case 8: // clear bkpt
-//  244     dbg->pos = 0;
-??parseAnswer_34:
+//  239         break;
+        B.N      ??parseAnswer_5
+//  240       }
+//  241     break;
+//  242   case 8: // clear bkpt
+//  243     dbg->pos = 0;
+??parseAnswer_37:
         MOVS     R0,#+0
-//  245     addr = ((*(uint32_t*)(&dbg->buf[1]))&0xFFFFFFFE)|1;
-//  246     for (tmp = 0; tmp<NUMOFBKPTS;tmp++)
+//  244     addr = ((*(uint32_t*)(&dbg->buf[1]))&0xFFFFFFFE)|1;
+//  245     for (tmp = 0; tmp<NUMOFBKPTS;tmp++)
         MOVS     R1,#+0
-        STRB     R0,[R4, #+2]
+        STRB     R0,[R5, #+2]
         LDR      R0,[R3, #+1]
-        MOVS     R5,#+0
+        MOVS     R6,#+0
         ORR      R0,R0,#0x1
-//  247     {
-//  248       if (FP->FP_COMP[tmp]==addr)
-??parseAnswer_35:
+//  246     {
+//  247       if (FP->FP_COMP[tmp]==addr)
+??parseAnswer_38:
         LDR      R3,[R2, R1, LSL #+2]
         CMP      R3,R0
         IT       EQ 
-        STREQ    R5,[R2, R1, LSL #+2]
-//  249         FP->FP_COMP[tmp] = 0;
-//  250     }
+        STREQ    R6,[R2, R1, LSL #+2]
+//  248         FP->FP_COMP[tmp] = 0;
+//  249     }
         ADDS     R1,R1,#+1
         CMP      R1,#+8
-        BCC.N    ??parseAnswer_35
-        B.N      ??parseAnswer_4
-//  251     break;
-//  252   case 9: // step
-//  253     dbg->pos = 0;
-??parseAnswer_36:
-        MOVS     R0,#+0
-??parseAnswer_6:
-        STRB     R0,[R4, #+2]
-//  254     break;
-//  255   }
-//  256   dbg->txCnt = 0;
-//  257   dbg->tx = 1;
-??parseAnswer_4:
-        LDR      R3,[R4, #+0]
-        MOVS     R1,#+0
-        LDR.N    R2,??DataTable2_7  ;; 0x20001083
-//  258   dbg->tx_state = txSendS;
-//  259   SET_BIT(USART6->CR1, USART_CR1_TXEIE);
-        LDR.N    R0,??DataTable2_8  ;; 0x40011400
-        STRB     R1,[R2, #+0]
-        ORR      R3,R3,#0x1
-        STR      R3,[R4, #+0]
-        STRB     R1,[R4, #+1]
+        BCC.N    ??parseAnswer_38
+        B.N      ??parseAnswer_5
+//  250     break;
+//  251   case 9: // step
+//  252     dbg->NVICISER[0] = NVIC->ISER[0];
+??parseAnswer_39:
+        LDR.N    R0,??DataTable2_8  ;; 0xe000e100
+//  253     NVIC->ICER[0] = dbg->NVICISER[0];
+        LDR.N    R2,??DataTable2_9  ;; 0xe000e180
         LDR      R1,[R0, #+0]
-        ORR      R1,R1,#0x80
+        STR      R1,[R4, #+1]
+        STR      R1,[R2, #+0]
+//  254     dbg->NVICISER[1] = NVIC->ISER[1];
+        LDR      R1,[R0, #+4]
+        STR      R1,[R4, #+5]
+//  255     NVIC->ICER[1] = dbg->NVICISER[1];
+        STR      R1,[R2, #+4]
+//  256     dbg->NVICISER[2] = NVIC->ISER[2];
+        LDR      R0,[R0, #+8]
+        STR      R0,[R4, #+9]
+//  257     NVIC->ICER[2] = dbg->NVICISER[2];
+        STR      R0,[R2, #+8]
+//  258     
+//  259     DEMCR|=1<<18; // step the core
+        LDR.N    R0,??DataTable2_10  ;; 0xe000edfc
+        LDR      R1,[R0, #+0]
+        ORR      R1,R1,#0x40000
         STR      R1,[R0, #+0]
-//  260 }
-        POP      {R0,R4,R5,PC}    ;; return
+//  260     //__disable_irq(); // because step exception occured in interrupt
+//  261     dbg->StopProgramm = 0;
+        LDR      R0,[R5, #+0]
+        BIC      R0,R0,#0x2
+        STR      R0,[R5, #+0]
+//  262     dbg->pos = 0;
+??parseAnswer_11:
+        MOVS     R2,#+0
+        STRB     R2,[R5, #+2]
+//  263     break;
+        B.N      ??parseAnswer_5
+//  264   case 10: // write reg
+//  265     addr = ((*(uint32_t*)(&dbg->buf[2])));
+//  266     switch (dbg->buf[1])
+??parseAnswer_40:
+        LDRB     R2,[R3, #+1]
+        LDR      R1,[R3, #+2]
+        CMP      R2,#+16
+        BHI.N    ??parseAnswer_5
+        TBB      [PC, R2]
+        DATA
+??parseAnswer_2:
+        DC8      0x9,0xB,0xD,0xF
+        DC8      0x11,0x13,0x15,0x17
+        DC8      0x19,0x1B,0x1D,0x1F
+        DC8      0x21,0x28,0x23,0x25
+        DC8      0x27,0x0
+        THUMB
+//  267     {
+//  268     case 0x00:
+//  269       regList->R0 = addr;
+??parseAnswer_41:
+        STR      R1,[R0, #+36]
+//  270       break;
+        B.N      ??parseAnswer_5
+//  271     case 0x01:
+//  272       regList->R1 = addr;
+??parseAnswer_42:
+        STR      R1,[R0, #+40]
+//  273       break;
+        B.N      ??parseAnswer_5
+//  274     case 0x02:
+//  275       regList->R2 = addr;
+??parseAnswer_43:
+        STR      R1,[R0, #+44]
+//  276       break;
+        B.N      ??parseAnswer_5
+//  277     case 0x03:
+//  278       regList->R3 = addr;
+??parseAnswer_44:
+        STR      R1,[R0, #+48]
+//  279       break;
+        B.N      ??parseAnswer_5
+//  280     case 0x04:
+//  281       regList->R4 = addr;
+??parseAnswer_45:
+        STR      R1,[R0, #+0]
+//  282       break;
+        B.N      ??parseAnswer_5
+//  283     case 0x05:
+//  284       regList->R5 = addr;
+??parseAnswer_46:
+        STR      R1,[R0, #+4]
+//  285       break;
+        B.N      ??parseAnswer_5
+//  286     case 0x06:
+//  287       regList->R6 = addr;
+??parseAnswer_47:
+        STR      R1,[R0, #+8]
+//  288       break;
+        B.N      ??parseAnswer_5
+//  289     case 0x07:
+//  290       regList->R7 = addr;
+??parseAnswer_48:
+        STR      R1,[R0, #+12]
+//  291       break;
+        B.N      ??parseAnswer_5
+//  292     case 0x08:
+//  293       regList->R8 = addr;
+??parseAnswer_49:
+        STR      R1,[R0, #+16]
+//  294       break;
+        B.N      ??parseAnswer_5
+//  295     case 0x09:
+//  296       regList->R9 = addr;
+??parseAnswer_50:
+        STR      R1,[R0, #+20]
+//  297       break;
+        B.N      ??parseAnswer_5
+//  298     case 0x0A:
+//  299       regList->R10 = addr;
+??parseAnswer_51:
+        STR      R1,[R0, #+24]
+//  300       break;
+        B.N      ??parseAnswer_5
+//  301     case 0x0B:
+//  302       regList->R11 = addr;
+??parseAnswer_52:
+        STR      R1,[R0, #+28]
+//  303       break;
+        B.N      ??parseAnswer_5
+//  304     case 0x0C:
+//  305       regList->R12 = addr;
+??parseAnswer_53:
+        STR      R1,[R0, #+52]
+//  306       break;
+        B.N      ??parseAnswer_5
+//  307     case 0x0D:
+//  308       //(uint32_t)regList; // sp
+//  309       break;
+//  310     case 0x0E:
+//  311       regList->LR = addr;
+??parseAnswer_54:
+        STR      R1,[R0, #+56]
+//  312       break;
+        B.N      ??parseAnswer_5
+//  313     case 0x0F:
+//  314       regList->PC = addr;
+??parseAnswer_55:
+        STR      R1,[R0, #+60]
+//  315       break;
+        B.N      ??parseAnswer_5
+//  316     case 0x10:
+//  317       regList->xPSR = addr;
+??parseAnswer_56:
+        STR      R1,[R0, #+64]
+//  318       break;
+//  319     }
+//  320     break;
+//  321   }
+//  322   dbg->txCnt = 0;
+//  323   dbg->tx = 1;
+??parseAnswer_5:
+        LDR      R1,[R5, #+0]
+        MOVS     R0,#+0
+        STRB     R0,[R4, #+0]
+        ORR      R1,R1,#0x1
+        STR      R1,[R5, #+0]
+//  324   dbg->tx_state = txSendS;
+        STRB     R0,[R5, #+1]
+//  325   SET_BIT(USART6->CR1, USART_CR1_TXEIE);
+        LDR.N    R0,??DataTable2_11  ;; 0x40011400
+        LDR      R3,[R0, #+0]
+        ORR      R3,R3,#0x80
+        STR      R3,[R0, #+0]
+//  326 }
+        POP      {R4-R6,PC}       ;; return
           CFI EndBlock cfiBlock1
-//  261 
-//  262 #define FP_LAR_UNLOCK_KEY 0xc5acce55
-//  263 #define FP_LAR_PTR ((unsigned int*) 0xe0002fb0)
-//  264 
+//  327 
+//  328 #define FP_LAR_UNLOCK_KEY 0xc5acce55
+//  329 #define FP_LAR_PTR ((unsigned int*) 0xe0002fb0)
+//  330 
 
         SECTION `.text`:CODE:NOROOT(1)
           CFI Block cfiBlock2 Using cfiCommon0
           CFI Function initDbg
           CFI NoCalls
         THUMB
-//  265 void initDbg()
-//  266 {
+//  331 void initDbg()
+//  332 {
 initDbg:
         PUSH     {R4,R5,LR}
           CFI R14 Frame(CFA, -4)
           CFI R5 Frame(CFA, -8)
           CFI R4 Frame(CFA, -12)
           CFI CFA R13+12
-//  267   *FP_LAR_PTR = FP_LAR_UNLOCK_KEY;
-        LDR.N    R0,??DataTable2_9  ;; 0xc5acce55
-        LDR.N    R1,??DataTable2_10  ;; 0xe0002fb0
-        STR      R0,[R1, #+0]
-//  268   DEMCR   = 0x00010000; // enable debug mon
-//  269   FP->FP_CTRL = 0x00000003; // enable flash patch
-        LDR.N    R0,??DataTable2_11  ;; 0xe0002000
+//  333   *FP_LAR_PTR = FP_LAR_UNLOCK_KEY;
+        LDR.N    R0,??DataTable2_12  ;; 0xc5acce55
+        LDR.N    R1,??DataTable2_13  ;; 0xe0002fb0
+//  334   DEMCR   = 0x00010000; // enable debug mon
+//  335   FP->FP_CTRL = 0x00000003; // enable flash patch
         MOVS     R4,#+3
-//  270   FP->FP_COMP[0] = 0x080017CC | 1; // set breakpoint in main loop
-        LDR.N    R5,??DataTable2_12  ;; 0x80017cd
+        LDR.N    R5,??DataTable2_14  ;; 0xe0002000
+        STR      R0,[R1, #+0]
         MOV      R2,#+65536
-        STR      R4,[R0, #+0]
-        LDR.N    R3,??DataTable2_13  ;; 0xe000edfc
-        STR      R5,[R0, #+8]
+        LDR.N    R3,??DataTable2_10  ;; 0xe000edfc
+        STR      R4,[R5, #+0]
         STR      R2,[R3, #+0]
-//  271 
-//  272   for (int i=0;i<sizeof(dbg_t);i+=4)
+//  336   //FP->FP_COMP[0] = 0x080017CC | 1; // set breakpoint in main loop
+//  337 
+//  338   for (int i=0;i<sizeof(dbg_t);i+=4)
         MOVS     R0,#+0
         LDR.N    R1,??DataTable2_1  ;; 0x20001000
         MOVS     R4,#+0
-//  273     (((uint32_t*)dbgG)[i/4])=0;
+//  339     (((uint32_t*)dbgG)[i/4])=0;
 ??initDbg_0:
         ASRS     R2,R0,#+1
         ADD      R3,R0,R2, LSR #+30
         ADDS     R0,R0,#+4
         ASRS     R3,R3,#+2
-        CMP      R0,#+140
+        CMP      R0,#+144
         STR      R4,[R1, R3, LSL #+2]
         BCC.N    ??initDbg_0
-//  274 }
+//  340 }
         POP      {R4,R5,PC}       ;; return
           CFI EndBlock cfiBlock2
 
@@ -653,73 +799,79 @@ initDbg:
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable2_2:
-        DC32     0x20001008
-
-        SECTION `.text`:CODE:NOROOT(2)
-        SECTION_TYPE SHT_PROGBITS, 0
-        DATA
-??DataTable2_3:
-        DC32     0xe0002008
-
-        SECTION `.text`:CODE:NOROOT(2)
-        SECTION_TYPE SHT_PROGBITS, 0
-        DATA
-??DataTable2_4:
-        DC32     0x20001003
-
-        SECTION `.text`:CODE:NOROOT(2)
-        SECTION_TYPE SHT_PROGBITS, 0
-        DATA
-??DataTable2_5:
-        DC32     0xe000201c
-
-        SECTION `.text`:CODE:NOROOT(2)
-        SECTION_TYPE SHT_PROGBITS, 0
-        DATA
-??DataTable2_6:
-        DC32     0xdeadface
-
-        SECTION `.text`:CODE:NOROOT(2)
-        SECTION_TYPE SHT_PROGBITS, 0
-        DATA
-??DataTable2_7:
         DC32     0x20001083
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
+??DataTable2_3:
+        DC32     0x20001008
+
+        SECTION `.text`:CODE:NOROOT(2)
+        SECTION_TYPE SHT_PROGBITS, 0
+        DATA
+??DataTable2_4:
+        DC32     0xe0002008
+
+        SECTION `.text`:CODE:NOROOT(2)
+        SECTION_TYPE SHT_PROGBITS, 0
+        DATA
+??DataTable2_5:
+        DC32     0x20001003
+
+        SECTION `.text`:CODE:NOROOT(2)
+        SECTION_TYPE SHT_PROGBITS, 0
+        DATA
+??DataTable2_6:
+        DC32     0xe000201c
+
+        SECTION `.text`:CODE:NOROOT(2)
+        SECTION_TYPE SHT_PROGBITS, 0
+        DATA
+??DataTable2_7:
+        DC32     0xdeadface
+
+        SECTION `.text`:CODE:NOROOT(2)
+        SECTION_TYPE SHT_PROGBITS, 0
+        DATA
 ??DataTable2_8:
-        DC32     0x40011400
+        DC32     0xe000e100
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable2_9:
-        DC32     0xc5acce55
+        DC32     0xe000e180
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable2_10:
-        DC32     0xe0002fb0
+        DC32     0xe000edfc
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable2_11:
-        DC32     0xe0002000
+        DC32     0x40011400
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable2_12:
-        DC32     0x80017cd
+        DC32     0xc5acce55
 
         SECTION `.text`:CODE:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
         DATA
 ??DataTable2_13:
-        DC32     0xe000edfc
+        DC32     0xe0002fb0
+
+        SECTION `.text`:CODE:NOROOT(2)
+        SECTION_TYPE SHT_PROGBITS, 0
+        DATA
+??DataTable2_14:
+        DC32     0xe0002000
 
         SECTION `.iar_vfe_header`:DATA:NOALLOC:NOROOT(2)
         SECTION_TYPE SHT_PROGBITS, 0
@@ -727,143 +879,143 @@ initDbg:
         DC32 0
 
         END
-//  275 
-//  276 
-//  277 /*
-//  278 void rxCb(uint8_t byte)
-//  279 {
-//  280   dbg_t* dbg = dbgG; // debug vars pointer
-//  281   
-//  282   if (dbg->tx) // use half duplex mode
-//  283     return;
-//  284   
-//  285   switch(dbg->rx_state)
-//  286   {
-//  287   default:
-//  288   case rxWaitS:
-//  289     if (byte==0xAA)
-//  290       dbg->rx_state = rxWaitC;
-//  291     break;
-//  292   case rxWaitC:
-//  293     if (byte == 0xFF)
-//  294       dbg->rx_state = rxReceive;
-//  295     else
-//  296       dbg->rx_state = rxWaitS;
-//  297     dbg->pos = 0;
-//  298     break;
-//  299   case rxReceive:
-//  300     if (byte == 0xAA)
-//  301       dbg->rx_state = rxEsc;
-//  302     else
-//  303       dbg->buf[dbg->pos++] = byte;
-//  304     break;
-//  305   case rxEsc:
-//  306     if (byte == 0xAA)
-//  307     {
-//  308       dbg->buf[dbg->pos++] = byte;
-//  309       dbg->rx_state  = rxReceive;
-//  310     }
-//  311     else if (byte == 0x00)
-//  312     {
-//  313       parseAnswer();
-//  314     }
-//  315     else
-//  316       dbg->rx_state = rxWaitS;
-//  317   }
-//  318 }
-//  319 
-//  320 void txCb()
-//  321 {
-//  322   dbg_t* dbg = dbgG;
-//  323   switch (dbg->tx_state)
-//  324   {
-//  325   case txSendS:
-//  326     USART6->TDR = 0xAA;
-//  327     dbg->tx_state = txSendC;
-//  328     break;
-//  329   case txSendC:
-//  330     USART6->TDR = 0xFF;
-//  331     dbg->tx_state = txSendN;
-//  332     break;
-//  333   case txSendN:
-//  334     if (dbg->txCnt>=dbg->pos)
-//  335     {
-//  336       USART6->TDR = 0xAA;
-//  337       dbg->tx_state = txEnd;
-//  338       break;
-//  339     }
-//  340     if (dbg->buf[dbg->txCnt]==0xAA)
-//  341     {
-//  342       USART6->TDR = 0xAA;
-//  343       dbg->tx_state = txEsc;
-//  344       break;
-//  345     }
-//  346     USART6->TDR = dbg->buf[dbg->txCnt++];
-//  347     break;
-//  348   case txEsc:
-//  349     USART6->TDR = 0xAA;
-//  350     dbg->txCnt++;
-//  351     dbg->tx_state = txSendN;
-//  352     break;
-//  353   case txEnd:
-//  354     USART6->TDR = 0x00;
-//  355     dbg->rx_state = rxWaitS;
-//  356     dbg->tx = 0;
-//  357     CLEAR_BIT(USART6->CR1, USART_CR1_TXEIE);
-//  358     break;
-//  359   case txSendS2:
-//  360     USART6->TDR = 0xAA;
-//  361     dbg->tx_state = txBrk;
-//  362     break;
-//  363   case txBrk:
-//  364     USART6->TDR = 0xA5;
-//  365     dbg->rx_state = rxWaitS;
-//  366     dbg->tx = 0;
-//  367     CLEAR_BIT(USART6->CR1, USART_CR1_TXEIE);
-//  368     break;
-//  369   }
-//  370 }
-//  371 
-//  372 void DebugMon_HandlerO(void)
-//  373 {
-//  374   //HAL_NVIC_DisableIRQ(USART6_IRQn);
-//  375   dbgG->StopProgramm = 1;
-//  376   
-//  377   for (int i=0;i<8;i++)
-//  378     FP->FP_COMP[i] = 0;
-//  379   
-//  380   while (USART6->CR1 & USART_CR1_TXEIE)
-//  381   {
-//  382     if ((USART6->ISR & USART_ISR_TXE) != 0U)
-//  383     {
-//  384       txCb();
-//  385     }
-//  386   }
-//  387   
-//  388   dbgG->tx_state = txSendS2;
-//  389   dbgG->tx = 1;
-//  390   SET_BIT(USART6->CR1, USART_CR1_TXEIE);
-//  391   while (dbgG->StopProgramm)
-//  392   {
-//  393     if (((USART6->ISR & USART_ISR_RXNE) != 0U)
-//  394         && ((USART6->CR1 & USART_CR1_RXNEIE) != 0U))
-//  395     {
-//  396       rxCb(USART6->RDR);
-//  397     }
-//  398 
-//  399     if (((USART6->ISR & USART_ISR_TXE) != 0U)
-//  400         && ((USART6->CR1 & USART_CR1_TXEIE) != 0U))
+//  341 
+//  342 
+//  343 /*
+//  344 void rxCb(uint8_t byte)
+//  345 {
+//  346   dbg_t* dbg = dbgG; // debug vars pointer
+//  347   
+//  348   if (dbg->tx) // use half duplex mode
+//  349     return;
+//  350   
+//  351   switch(dbg->rx_state)
+//  352   {
+//  353   default:
+//  354   case rxWaitS:
+//  355     if (byte==0xAA)
+//  356       dbg->rx_state = rxWaitC;
+//  357     break;
+//  358   case rxWaitC:
+//  359     if (byte == 0xFF)
+//  360       dbg->rx_state = rxReceive;
+//  361     else
+//  362       dbg->rx_state = rxWaitS;
+//  363     dbg->pos = 0;
+//  364     break;
+//  365   case rxReceive:
+//  366     if (byte == 0xAA)
+//  367       dbg->rx_state = rxEsc;
+//  368     else
+//  369       dbg->buf[dbg->pos++] = byte;
+//  370     break;
+//  371   case rxEsc:
+//  372     if (byte == 0xAA)
+//  373     {
+//  374       dbg->buf[dbg->pos++] = byte;
+//  375       dbg->rx_state  = rxReceive;
+//  376     }
+//  377     else if (byte == 0x00)
+//  378     {
+//  379       parseAnswer();
+//  380     }
+//  381     else
+//  382       dbg->rx_state = rxWaitS;
+//  383   }
+//  384 }
+//  385 
+//  386 void txCb()
+//  387 {
+//  388   dbg_t* dbg = dbgG;
+//  389   switch (dbg->tx_state)
+//  390   {
+//  391   case txSendS:
+//  392     USART6->TDR = 0xAA;
+//  393     dbg->tx_state = txSendC;
+//  394     break;
+//  395   case txSendC:
+//  396     USART6->TDR = 0xFF;
+//  397     dbg->tx_state = txSendN;
+//  398     break;
+//  399   case txSendN:
+//  400     if (dbg->txCnt>=dbg->pos)
 //  401     {
-//  402       txCb();
-//  403     }
-//  404     
-//  405   }
-//  406 }
-//  407 */
+//  402       USART6->TDR = 0xAA;
+//  403       dbg->tx_state = txEnd;
+//  404       break;
+//  405     }
+//  406     if (dbg->buf[dbg->txCnt]==0xAA)
+//  407     {
+//  408       USART6->TDR = 0xAA;
+//  409       dbg->tx_state = txEsc;
+//  410       break;
+//  411     }
+//  412     USART6->TDR = dbg->buf[dbg->txCnt++];
+//  413     break;
+//  414   case txEsc:
+//  415     USART6->TDR = 0xAA;
+//  416     dbg->txCnt++;
+//  417     dbg->tx_state = txSendN;
+//  418     break;
+//  419   case txEnd:
+//  420     USART6->TDR = 0x00;
+//  421     dbg->rx_state = rxWaitS;
+//  422     dbg->tx = 0;
+//  423     CLEAR_BIT(USART6->CR1, USART_CR1_TXEIE);
+//  424     break;
+//  425   case txSendS2:
+//  426     USART6->TDR = 0xAA;
+//  427     dbg->tx_state = txBrk;
+//  428     break;
+//  429   case txBrk:
+//  430     USART6->TDR = 0xA5;
+//  431     dbg->rx_state = rxWaitS;
+//  432     dbg->tx = 0;
+//  433     CLEAR_BIT(USART6->CR1, USART_CR1_TXEIE);
+//  434     break;
+//  435   }
+//  436 }
+//  437 
+//  438 void DebugMon_HandlerO(void)
+//  439 {
+//  440   //HAL_NVIC_DisableIRQ(USART6_IRQn);
+//  441   dbgG->StopProgramm = 1;
+//  442   
+//  443   for (int i=0;i<8;i++)
+//  444     FP->FP_COMP[i] = 0;
+//  445   
+//  446   while (USART6->CR1 & USART_CR1_TXEIE)
+//  447   {
+//  448     if ((USART6->ISR & USART_ISR_TXE) != 0U)
+//  449     {
+//  450       txCb();
+//  451     }
+//  452   }
+//  453   
+//  454   dbgG->tx_state = txSendS2;
+//  455   dbgG->tx = 1;
+//  456   SET_BIT(USART6->CR1, USART_CR1_TXEIE);
+//  457   while (dbgG->StopProgramm)
+//  458   {
+//  459     if (((USART6->ISR & USART_ISR_RXNE) != 0U)
+//  460         && ((USART6->CR1 & USART_CR1_RXNEIE) != 0U))
+//  461     {
+//  462       rxCb(USART6->RDR);
+//  463     }
+//  464 
+//  465     if (((USART6->ISR & USART_ISR_TXE) != 0U)
+//  466         && ((USART6->CR1 & USART_CR1_TXEIE) != 0U))
+//  467     {
+//  468       txCb();
+//  469     }
+//  470     
+//  471   }
+//  472 }
+//  473 */
 // 
-// 518 bytes in section .text
+// 660 bytes in section .text
 // 
-// 518 bytes of CODE memory
+// 660 bytes of CODE memory
 //
 //Errors: none
 //Warnings: none

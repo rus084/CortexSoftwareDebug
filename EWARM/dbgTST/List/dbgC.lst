@@ -1,32 +1,32 @@
 ###############################################################################
 #
-# IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM         22/Feb/2020  20:32:02
+# IAR ANSI C/C++ Compiler V8.30.1.114/W32 for ARM         02/Mar/2020  19:27:57
 # Copyright 1999-2018 IAR Systems AB.
 #
 #    Cpu mode     =  thumb
 #    Endian       =  little
-#    Source file  =  D:\win10\f7dbg\dbgTST\EWARM\dbgC.c
+#    Source file  =  D:\win10\f7dbg\git\EWARM\dbgC.c
 #    Command line =  
-#        -f C:\Users\rus08\AppData\Local\Temp\EW235F.tmp
-#        (D:\win10\f7dbg\dbgTST\EWARM\dbgC.c -D USE_HAL_DRIVER -D STM32F723xx
-#        -lC D:\win10\f7dbg\dbgTST\EWARM\dbgTST\List -lA
-#        D:\win10\f7dbg\dbgTST\EWARM\dbgTST\List -o
-#        D:\win10\f7dbg\dbgTST\EWARM\dbgTST\Obj --debug --endian=little
+#        -f C:\Users\rus08\AppData\Local\Temp\EW6A18.tmp
+#        (D:\win10\f7dbg\git\EWARM\dbgC.c -D USE_HAL_DRIVER -D STM32F723xx -lC
+#        D:\win10\f7dbg\git\EWARM\dbgTST\List -lA
+#        D:\win10\f7dbg\git\EWARM\dbgTST\List -o
+#        D:\win10\f7dbg\git\EWARM\dbgTST\Obj --debug --endian=little
 #        --cpu=Cortex-M7 -e --fpu=VFPv5_sp --dlib_config "C:\Program Files
 #        (x86)\IAR Systems\Embedded Workbench 8.1\arm\inc\c\DLib_Config_Full.h"
-#        -I D:\win10\f7dbg\dbgTST\EWARM/../Inc\ -I
-#        D:\win10\f7dbg\dbgTST\EWARM/../Drivers/STM32F7xx_HAL_Driver/Inc\ -I
-#        D:\win10\f7dbg\dbgTST\EWARM/../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy\
+#        -I D:\win10\f7dbg\git\EWARM/../Inc\ -I
+#        D:\win10\f7dbg\git\EWARM/../Drivers/STM32F7xx_HAL_Driver/Inc\ -I
+#        D:\win10\f7dbg\git\EWARM/../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy\
 #        -I
-#        D:\win10\f7dbg\dbgTST\EWARM/../Drivers/CMSIS/Device/ST/STM32F7xx/Include\
-#        -I D:\win10\f7dbg\dbgTST\EWARM/../Drivers/CMSIS/Include\ -Ohz)
+#        D:\win10\f7dbg\git\EWARM/../Drivers/CMSIS/Device/ST/STM32F7xx/Include\
+#        -I D:\win10\f7dbg\git\EWARM/../Drivers/CMSIS/Include\ -Ohz)
 #    Locale       =  C
-#    List file    =  D:\win10\f7dbg\dbgTST\EWARM\dbgTST\List\dbgC.lst
-#    Object file  =  D:\win10\f7dbg\dbgTST\EWARM\dbgTST\Obj\dbgC.o
+#    List file    =  D:\win10\f7dbg\git\EWARM\dbgTST\List\dbgC.lst
+#    Object file  =  D:\win10\f7dbg\git\EWARM\dbgTST\Obj\dbgC.o
 #
 ###############################################################################
 
-D:\win10\f7dbg\dbgTST\EWARM\dbgC.c
+D:\win10\f7dbg\git\EWARM\dbgC.c
       1          #include "stdint.h"
       2          #include "stm32f7xx.h"
       3          
@@ -100,196 +100,196 @@ D:\win10\f7dbg\dbgTST\EWARM\dbgC.c
      71            uint8_t pos; // receive/send position
      72            uint8_t buf[128];
      73            uint8_t txCnt; // size of send data
-     74            uint32_t SetBkpt;
-     75            uint8_t BkptNum;
-     76          } dbg_t;
-     77          
-     78          #define dbgG ((dbg_t*)DBG_ADDR)
-     79          
+     74            uint32_t NVICISER[3];
+     75          } dbg_t;
+     76          
+     77          #define dbgG ((dbg_t*)DBG_ADDR)
+     78          
 
    \                                 In section .text, align 2, keep-with-next
-     80          int memcpySafe(uint8_t* to,uint8_t* from, int len)
-     81          {
+     79          int memcpySafe(uint8_t* to,uint8_t* from, int len)
+     80          {
    \                     memcpySafe: (+1)
    \        0x0   0xB5F0             PUSH     {R4-R7,LR}
-     82              /* Cortex-M3, Cortex-M4, Cortex-M4F, Cortex-M7 are supported */
-     83              static const uint32_t BFARVALID_MASK = (0x80 << SCB_CFSR_BUSFAULTSR_Pos);
-     84              int cnt = 0;
-     85          
-     86              /* Clear BFARVALID flag by writing 1 to it */
-     87              SCB->CFSR |= BFARVALID_MASK;
+     81              /* Cortex-M3, Cortex-M4, Cortex-M4F, Cortex-M7 are supported */
+     82              static const uint32_t BFARVALID_MASK = (0x80 << SCB_CFSR_BUSFAULTSR_Pos);
+     83              int cnt = 0;
+     84          
+     85              /* Clear BFARVALID flag by writing 1 to it */
+     86              SCB->CFSR |= BFARVALID_MASK;
    \        0x2   0x....             LDR.N    R4,??DataTable2  ;; 0xe000ed14
    \        0x4   0x4603             MOV      R3,R0
    \        0x6   0x6965             LDR      R5,[R4, #+20]
    \        0x8   0x2000             MOVS     R0,#+0
    \        0xA   0xF445 0x4500      ORR      R5,R5,#0x8000
    \        0xE   0x6165             STR      R5,[R4, #+20]
-     88          
-     89              /* Ignore BusFault by enabling BFHFNMIGN and disabling interrupts */
-     90              uint32_t mask = __get_FAULTMASK();
+     87          
+     88              /* Ignore BusFault by enabling BFHFNMIGN and disabling interrupts */
+     89              uint32_t mask = __get_FAULTMASK();
    \       0x10   0xF3EF 0x8513      MRS      R5,FAULTMASK
-     91              __disable_fault_irq();
+     90              __disable_fault_irq();
    \       0x14   0xB671             CPSID    F
-     92              SCB->CCR |= SCB_CCR_BFHFNMIGN_Msk;
+     91              SCB->CCR |= SCB_CCR_BFHFNMIGN_Msk;
    \       0x16   0x6826             LDR      R6,[R4, #+0]
    \       0x18   0xF446 0x7680      ORR      R6,R6,#0x100
    \       0x1C   0x6026             STR      R6,[R4, #+0]
    \       0x1E   0xE004             B.N      ??memcpySafe_0
-     93          
-     94              while ((cnt<len))
-     95              {
-     96                *(to++) = *(from++);
+     92          
+     93              while ((cnt<len))
+     94              {
+     95                *(to++) = *(from++);
    \                     ??memcpySafe_1: (+1)
    \       0x20   0xF811 0x7B01      LDRB     R7,[R1], #+1
-     97                cnt++;
+     96                cnt++;
    \       0x24   0x1C40             ADDS     R0,R0,#+1
    \       0x26   0xF803 0x7B01      STRB     R7,[R3], #+1
-     98              }
+     97              }
    \                     ??memcpySafe_0: (+1)
    \       0x2A   0x4290             CMP      R0,R2
    \       0x2C   0xDBF8             BLT.N    ??memcpySafe_1
-     99          
-    100              /* Reenable BusFault by clearing  BFHFNMIGN */
-    101              SCB->CCR &= ~SCB_CCR_BFHFNMIGN_Msk;
+     98          
+     99              /* Reenable BusFault by clearing  BFHFNMIGN */
+    100              SCB->CCR &= ~SCB_CCR_BFHFNMIGN_Msk;
    \       0x2E   0x6821             LDR      R1,[R4, #+0]
    \       0x30   0xF421 0x7180      BIC      R1,R1,#0x100
    \       0x34   0x6021             STR      R1,[R4, #+0]
-    102              __set_FAULTMASK(mask);
+    101              __set_FAULTMASK(mask);
    \       0x36   0xF385 0x8813      MSR      FAULTMASK,R5
-    103          
-    104              return cnt;
+    102          
+    103              return cnt;
    \       0x3A   0xBDF0             POP      {R4-R7,PC}       ;; return
-    105          }
-    106          
+    104          }
+    105          
 
    \                                 In section .text, align 4, keep-with-next
-    107          void parseAnswer(exceptionFrame_t* regList)
-    108          {
+    106          void parseAnswer(exceptionFrame_t* regList)
+    107          {
    \                     parseAnswer: (+1)
-   \        0x0   0xB538             PUSH     {R3-R5,LR}
-    109            dbg_t* dbg = dbgG;
-    110            uint32_t addr;
-    111            uint32_t tmp;
-    112            switch (dbg->buf[0])
-   \        0x2   0x....             LDR.N    R4,??DataTable2_1  ;; 0x20001000
-   \        0x4   0x....             LDR.N    R1,??DataTable2_2  ;; 0x20001008
-   \        0x6   0x78E5             LDRB     R5,[R4, #+3]
-   \        0x8   0x....             LDR.N    R2,??DataTable2_3  ;; 0xe0002008
-   \        0xA   0x....             LDR.N    R3,??DataTable2_4  ;; 0x20001003
-   \        0xC   0x1EAD             SUBS     R5,R5,#+2
-   \        0xE   0x2D07             CMP      R5,#+7
-   \       0x10   0xD805             BHI.N    ??parseAnswer_2
-   \       0x12   0xE8DF 0xF005      TBB      [PC, R5]
+   \        0x0   0xB570             PUSH     {R4-R6,LR}
+    108            dbg_t* dbg = dbgG;
+    109            uint32_t addr;
+    110            uint32_t tmp;
+    111            switch (dbg->buf[0])
+   \        0x2   0x....             LDR.N    R5,??DataTable2_1  ;; 0x20001000
+   \        0x4   0x....             LDR.N    R4,??DataTable2_2  ;; 0x20001083
+   \        0x6   0x78EE             LDRB     R6,[R5, #+3]
+   \        0x8   0x....             LDR.N    R1,??DataTable2_3  ;; 0x20001008
+   \        0xA   0x....             LDR.N    R2,??DataTable2_4  ;; 0xe0002008
+   \        0xC   0x....             LDR.N    R3,??DataTable2_5  ;; 0x20001003
+   \        0xE   0x1EB6             SUBS     R6,R6,#+2
+   \       0x10   0x2E08             CMP      R6,#+8
+   \       0x12   0xD806             BHI.N    ??parseAnswer_3
+   \       0x14   0xE8DF 0xF006      TBB      [PC, R6]
    \                     ??parseAnswer_0:
-   \       0x16   0x09 0x13          DC8      0x9,0x13,0x1E,0x2D
-   \              0x1E 0x2D    
-   \       0x1A   0x34 0x67          DC8      0x34,0x67,0x82,0x94
+   \       0x18   0x0A 0x14          DC8      0xA,0x14,0x1F,0x2C
+   \              0x1F 0x2C    
+   \       0x1C   0x33 0x67          DC8      0x33,0x67,0x82,0x94
    \              0x82 0x94    
-    113            {
-    114            case 1:
-    115            default:
-    116              dbg->pos = 1;
-   \                     ??parseAnswer_2: (+1)
-   \       0x1E   0x2001             MOVS     R0,#+1
-    117              dbg->buf[0] = 0x33;
-   \       0x20   0x2133             MOVS     R1,#+51
-   \       0x22   0x70A0             STRB     R0,[R4, #+2]
-   \       0x24   0x7019             STRB     R1,[R3, #+0]
-    118              break;
+   \       0x20   0xAE 0x00          DC8      0xAE,0x0
+    112            {
+    113            case 1:
+    114            default:
+    115              dbg->pos = 1;
    \                     ??parseAnswer_3: (+1)
-   \       0x26   0xE08C             B.N      ??parseAnswer_4
-    119            case 2:
-    120              if (dbg->pos>4)
-   \                     ??parseAnswer_5: (+1)
-   \       0x28   0x78A5             LDRB     R5,[R4, #+2]
-   \       0x2A   0x2D04             CMP      R5,#+4
-   \       0x2C   0xDDFB             BLE.N    ??parseAnswer_3
-    121              { // readMem
-    122                addr = *(uint32_t*)(&dbg->buf[1]);
-    123                uint8_t len = dbg->buf[5];
-    124                dbg->pos = memcpySafe(dbg->buf,(uint8_t*) addr, len);
-   \       0x2E   0x780A             LDRB     R2,[R1, #+0]
-   \       0x30   0xF8D3 0x1001      LDR      R1,[R3, #+1]
-   \       0x34   0x4618             MOV      R0,R3
-   \       0x36   0x.... 0x....      BL       memcpySafe
-   \       0x3A   0xE081             B.N      ??parseAnswer_6
-    125              }
-    126              break;
-    127            case 3:
-    128              if (dbg->pos>5)
-   \                     ??parseAnswer_7: (+1)
-   \       0x3C   0x78A0             LDRB     R0,[R4, #+2]
-   \       0x3E   0x2805             CMP      R0,#+5
-   \       0x40   0xDDF1             BLE.N    ??parseAnswer_3
-    129              { // writeMem
-    130                addr = *(uint32_t*)(&dbg->buf[1]);
-    131                uint8_t len = dbg->pos-5;
-    132                memcpySafe((uint8_t*)addr,&dbg->buf[5],len);
-   \       0x42   0x1F42             SUBS     R2,R0,#+5
-   \       0x44   0xF8D3 0x0001      LDR      R0,[R3, #+1]
-   \       0x48   0xB2D2             UXTB     R2,R2
-   \       0x4A   0x.... 0x....      BL       memcpySafe
-    133                dbg->pos = 1;
-   \       0x4E   0x2001             MOVS     R0,#+1
-   \       0x50   0xE076             B.N      ??parseAnswer_6
-    134              }
-    135              break;
-    136            case 4: // stop target
-    137              dbg->pos = 0;
+   \       0x22   0x2001             MOVS     R0,#+1
+    116              dbg->buf[0] = 0x33;
+   \       0x24   0x2133             MOVS     R1,#+51
+   \       0x26   0x70A8             STRB     R0,[R5, #+2]
+   \       0x28   0x7019             STRB     R1,[R3, #+0]
+    117              break;
+   \                     ??parseAnswer_4: (+1)
+   \       0x2A   0xE0D2             B.N      ??parseAnswer_5
+    118            case 2:
+    119              if (dbg->pos>4)
+   \                     ??parseAnswer_6: (+1)
+   \       0x2C   0x78AE             LDRB     R6,[R5, #+2]
+   \       0x2E   0x2E04             CMP      R6,#+4
+   \       0x30   0xDDFB             BLE.N    ??parseAnswer_4
+    120              { // readMem
+    121                addr = *(uint32_t*)(&dbg->buf[1]);
+    122                uint8_t len = dbg->buf[5];
+    123                dbg->pos = memcpySafe(dbg->buf,(uint8_t*) addr, len);
+   \       0x32   0x780A             LDRB     R2,[R1, #+0]
+   \       0x34   0xF8D3 0x1001      LDR      R1,[R3, #+1]
+   \       0x38   0x4618             MOV      R0,R3
+   \       0x3A   0x.... 0x....      BL       memcpySafe
+   \       0x3E   0xE050             B.N      ??parseAnswer_7
+    124              }
+    125              break;
+    126            case 3:
+    127              if (dbg->pos>5)
    \                     ??parseAnswer_8: (+1)
-   \       0x52   0x2100             MOVS     R1,#+0
-   \       0x54   0x70A1             STRB     R1,[R4, #+2]
-    138              if (dbg->StopProgramm)
-   \       0x56   0x6822             LDR      R2,[R4, #+0]
-   \       0x58   0xF3C2 0x0140      UBFX     R1,R2,#+1,#+1
-   \       0x5C   0x2900             CMP      R1,#+0
-   \       0x5E   0xD170             BNE.N    ??parseAnswer_4
-    139                break;
-    140              addr = regList->PC;
-    141              FP->FP_COMP[5] = (addr&0xFFFFFFFE) | 1;
-   \       0x60   0x6BC0             LDR      R0,[R0, #+60]
-   \       0x62   0x....             LDR.N    R1,??DataTable2_5  ;; 0xe000201c
-    142              dbg->pos = 0;
-   \       0x64   0x2200             MOVS     R2,#+0
-   \       0x66   0x70A2             STRB     R2,[R4, #+2]
+   \       0x40   0x78A8             LDRB     R0,[R5, #+2]
+   \       0x42   0x2805             CMP      R0,#+5
+   \       0x44   0xDDF1             BLE.N    ??parseAnswer_4
+    128              { // writeMem
+    129                addr = *(uint32_t*)(&dbg->buf[1]);
+    130                uint8_t len = dbg->pos-5;
+    131                memcpySafe((uint8_t*)addr,&dbg->buf[5],len);
+   \       0x46   0x1F42             SUBS     R2,R0,#+5
+   \       0x48   0xF8D3 0x0001      LDR      R0,[R3, #+1]
+   \       0x4C   0xB2D2             UXTB     R2,R2
+   \       0x4E   0x.... 0x....      BL       memcpySafe
+    132                dbg->pos = 1;
+   \       0x52   0x2001             MOVS     R0,#+1
+   \       0x54   0xE045             B.N      ??parseAnswer_7
+    133              }
+    134              break;
+    135            case 4: // stop target
+    136              dbg->pos = 0;
+   \                     ??parseAnswer_9: (+1)
+   \       0x56   0x2100             MOVS     R1,#+0
+   \       0x58   0x70A9             STRB     R1,[R5, #+2]
+    137              if (dbg->StopProgramm)
+   \       0x5A   0x682A             LDR      R2,[R5, #+0]
+   \       0x5C   0xF3C2 0x0140      UBFX     R1,R2,#+1,#+1
+   \       0x60   0x2900             CMP      R1,#+0
+   \       0x62   0xD10B             BNE.N    ??parseAnswer_10
+    138                break;
+    139              addr = regList->PC;
+    140              FP->FP_COMP[5] = (addr&0xFFFFFFFE) | 1;
+   \       0x64   0x6BC0             LDR      R0,[R0, #+60]
+   \       0x66   0x....             LDR.N    R1,??DataTable2_6  ;; 0xe000201c
    \       0x68   0xF040 0x0001      ORR      R0,R0,#0x1
    \       0x6C   0x6008             STR      R0,[R1, #+0]
-    143              break;
-   \       0x6E   0xE068             B.N      ??parseAnswer_4
-    144            case 5: // continue execution
-    145              
-    146              addr = __get_MSP();
-    147              addr = (*(uint32_t*)(addr+0x28)) | 1;
-    148              /*
-    149              for (tmp=0;tmp<NUMOFBKPTS;tmp++)
-    150              {
-    151                if (FP->FP_COMP[tmp]==addr)
-    152                {
-    153                  dbg->SetBkpt = addr;
-    154                  dbg->BkptNum = tmp;
-    155                  FP->FP_COMP[tmp] = 0;
-    156                }
-    157              }
-    158              
-    159              if (tmp!=NUMOFBKPTS)
-    160                DEMCR|=1<<18; // step the core
-    161              */
-    162              dbg->StopProgramm = 0;
-   \                     ??parseAnswer_9: (+1)
-   \       0x70   0x6820             LDR      R0,[R4, #+0]
-    163              dbg->pos = 0;
+    141              dbg->pos = 0;
+   \       0x6E   0xE07E             B.N      ??parseAnswer_11
+    142              break;
+    143            case 5: // continue execution
+    144              /*
+    145              addr = regList->PC | 1;
+    146              
+    147              for (tmp=0;tmp<NUMOFBKPTS;tmp++)
+    148              {
+    149                if (FP->FP_COMP[tmp]==addr)
+    150                {
+    151                  dbg->SetBkpt = addr;
+    152                  dbg->BkptNum = tmp;
+    153                  FP->FP_COMP[tmp] = 0;
+    154                  
+    155                  DEMCR|=1<<18; // step the core
+    156                  __disable_irq(); // because step exception occured in interrupt
+    157                  break;
+    158                }
+    159              }
+    160              */
+    161              dbg->StopProgramm = 0;
+   \                     ??parseAnswer_12: (+1)
+   \       0x70   0x6828             LDR      R0,[R5, #+0]
+    162              dbg->pos = 0;
    \       0x72   0x2100             MOVS     R1,#+0
    \       0x74   0xF020 0x0002      BIC      R0,R0,#0x2
-   \       0x78   0x6020             STR      R0,[R4, #+0]
-   \       0x7A   0x70A1             STRB     R1,[R4, #+2]
-    164              break;
-   \       0x7C   0xE061             B.N      ??parseAnswer_4
-    165            case 6: // read regs
-    166              switch (dbg->buf[1])
+   \       0x78   0x6028             STR      R0,[R5, #+0]
+   \       0x7A   0x70A9             STRB     R1,[R5, #+2]
+    163              break;
    \                     ??parseAnswer_10: (+1)
+   \       0x7C   0xE0A9             B.N      ??parseAnswer_5
+    164            case 6: // read regs
+    165              switch (dbg->buf[1])
+   \                     ??parseAnswer_13: (+1)
    \       0x7E   0x785A             LDRB     R2,[R3, #+1]
    \       0x80   0x2A10             CMP      R2,#+16
-   \       0x82   0xD82A             BHI.N    ??parseAnswer_11
+   \       0x82   0xD82A             BHI.N    ??parseAnswer_14
    \       0x84   0xE8DF 0xF002      TBB      [PC, R2]
    \                     ??parseAnswer_1:
    \       0x88   0x09 0x0B          DC8      0x9,0xB,0xD,0xF
@@ -301,255 +301,403 @@ D:\win10\f7dbg\dbgTST\EWARM\dbgC.c
    \       0x94   0x21 0x2A          DC8      0x21,0x2A,0x23,0x25
    \              0x23 0x25    
    \       0x98   0x27 0x00          DC8      0x27,0x0
-    167              {
-    168              case 0x00:
-    169                addr = regList->R0;
-   \                     ??parseAnswer_12: (+1)
-   \       0x9A   0x6A40             LDR      R0,[R0, #+36]
-    170                break;
-   \       0x9C   0xE01E             B.N      ??parseAnswer_13
-    171              case 0x01:
-    172                addr = regList->R1;
-   \                     ??parseAnswer_14: (+1)
-   \       0x9E   0x6A80             LDR      R0,[R0, #+40]
-    173                break;
-   \       0xA0   0xE01C             B.N      ??parseAnswer_13
-    174              case 0x02:
-    175                addr = regList->R2;
+    166              {
+    167              case 0x00:
+    168                addr = regList->R0;
    \                     ??parseAnswer_15: (+1)
-   \       0xA2   0x6AC0             LDR      R0,[R0, #+44]
-    176                break;
-   \       0xA4   0xE01A             B.N      ??parseAnswer_13
-    177              case 0x03:
-    178                addr = regList->R3;
-   \                     ??parseAnswer_16: (+1)
-   \       0xA6   0x6B00             LDR      R0,[R0, #+48]
-    179                break;
-   \       0xA8   0xE018             B.N      ??parseAnswer_13
-    180              case 0x04:
-    181                addr = regList->R4;
+   \       0x9A   0x6A40             LDR      R0,[R0, #+36]
+    169                break;
+   \       0x9C   0xE01E             B.N      ??parseAnswer_16
+    170              case 0x01:
+    171                addr = regList->R1;
    \                     ??parseAnswer_17: (+1)
-   \       0xAA   0x6800             LDR      R0,[R0, #+0]
-    182                break;
-   \       0xAC   0xE016             B.N      ??parseAnswer_13
-    183              case 0x05:
-    184                addr = regList->R5;
+   \       0x9E   0x6A80             LDR      R0,[R0, #+40]
+    172                break;
+   \       0xA0   0xE01C             B.N      ??parseAnswer_16
+    173              case 0x02:
+    174                addr = regList->R2;
    \                     ??parseAnswer_18: (+1)
-   \       0xAE   0x6840             LDR      R0,[R0, #+4]
-    185                break;
-   \       0xB0   0xE014             B.N      ??parseAnswer_13
-    186              case 0x06:
-    187                addr = regList->R6;
+   \       0xA2   0x6AC0             LDR      R0,[R0, #+44]
+    175                break;
+   \       0xA4   0xE01A             B.N      ??parseAnswer_16
+    176              case 0x03:
+    177                addr = regList->R3;
    \                     ??parseAnswer_19: (+1)
-   \       0xB2   0x6880             LDR      R0,[R0, #+8]
-    188                break;
-   \       0xB4   0xE012             B.N      ??parseAnswer_13
-    189              case 0x07:
-    190                addr = regList->R7;
+   \       0xA6   0x6B00             LDR      R0,[R0, #+48]
+    178                break;
+   \       0xA8   0xE018             B.N      ??parseAnswer_16
+    179              case 0x04:
+    180                addr = regList->R4;
    \                     ??parseAnswer_20: (+1)
-   \       0xB6   0x68C0             LDR      R0,[R0, #+12]
-    191                break;
-   \       0xB8   0xE010             B.N      ??parseAnswer_13
-    192              case 0x08:
-    193                addr = regList->R8;
+   \       0xAA   0x6800             LDR      R0,[R0, #+0]
+    181                break;
+   \       0xAC   0xE016             B.N      ??parseAnswer_16
+    182              case 0x05:
+    183                addr = regList->R5;
    \                     ??parseAnswer_21: (+1)
-   \       0xBA   0x6900             LDR      R0,[R0, #+16]
-    194                break;
-   \       0xBC   0xE00E             B.N      ??parseAnswer_13
-    195              case 0x09:
-    196                addr = regList->R9;
+   \       0xAE   0x6840             LDR      R0,[R0, #+4]
+    184                break;
+   \       0xB0   0xE014             B.N      ??parseAnswer_16
+    185              case 0x06:
+    186                addr = regList->R6;
    \                     ??parseAnswer_22: (+1)
-   \       0xBE   0x6940             LDR      R0,[R0, #+20]
-    197                break;
-   \       0xC0   0xE00C             B.N      ??parseAnswer_13
-    198              case 0x0A:
-    199                addr = regList->R10;
+   \       0xB2   0x6880             LDR      R0,[R0, #+8]
+    187                break;
+   \       0xB4   0xE012             B.N      ??parseAnswer_16
+    188              case 0x07:
+    189                addr = regList->R7;
    \                     ??parseAnswer_23: (+1)
-   \       0xC2   0x6980             LDR      R0,[R0, #+24]
-    200                break;
-   \       0xC4   0xE00A             B.N      ??parseAnswer_13
-    201              case 0x0B:
-    202                addr = regList->R11;
+   \       0xB6   0x68C0             LDR      R0,[R0, #+12]
+    190                break;
+   \       0xB8   0xE010             B.N      ??parseAnswer_16
+    191              case 0x08:
+    192                addr = regList->R8;
    \                     ??parseAnswer_24: (+1)
-   \       0xC6   0x69C0             LDR      R0,[R0, #+28]
-    203                break;
-   \       0xC8   0xE008             B.N      ??parseAnswer_13
-    204              case 0x0C:
-    205                addr = regList->R12;
+   \       0xBA   0x6900             LDR      R0,[R0, #+16]
+    193                break;
+   \       0xBC   0xE00E             B.N      ??parseAnswer_16
+    194              case 0x09:
+    195                addr = regList->R9;
    \                     ??parseAnswer_25: (+1)
-   \       0xCA   0x6B40             LDR      R0,[R0, #+52]
-    206                break;
-   \       0xCC   0xE006             B.N      ??parseAnswer_13
-    207              case 0x0D:
-    208                addr = (uint32_t)regList; // sp
-    209                break;
-    210              case 0x0E:
-    211                addr = regList->LR;
+   \       0xBE   0x6940             LDR      R0,[R0, #+20]
+    196                break;
+   \       0xC0   0xE00C             B.N      ??parseAnswer_16
+    197              case 0x0A:
+    198                addr = regList->R10;
    \                     ??parseAnswer_26: (+1)
-   \       0xCE   0x6B80             LDR      R0,[R0, #+56]
-    212                break;
-   \       0xD0   0xE004             B.N      ??parseAnswer_13
-    213              case 0x0F:
-    214                addr = regList->PC;
+   \       0xC2   0x6980             LDR      R0,[R0, #+24]
+    199                break;
+   \       0xC4   0xE00A             B.N      ??parseAnswer_16
+    200              case 0x0B:
+    201                addr = regList->R11;
    \                     ??parseAnswer_27: (+1)
-   \       0xD2   0x6BC0             LDR      R0,[R0, #+60]
-    215                break;
-   \       0xD4   0xE002             B.N      ??parseAnswer_13
-    216              case 0x10:
-    217                addr = regList->xPSR;
+   \       0xC6   0x69C0             LDR      R0,[R0, #+28]
+    202                break;
+   \       0xC8   0xE008             B.N      ??parseAnswer_16
+    203              case 0x0C:
+    204                addr = regList->R12;
    \                     ??parseAnswer_28: (+1)
-   \       0xD6   0x6C00             LDR      R0,[R0, #+64]
-    218                break;
-   \       0xD8   0xE000             B.N      ??parseAnswer_13
-    219              default:
-    220                addr = 0xDEADFACE;
-   \                     ??parseAnswer_11: (+1)
-   \       0xDA   0x....             LDR.N    R0,??DataTable2_6  ;; 0xdeadface
-    221                break;
-    222              }
-    223              *(uint32_t*)(dbg->buf) = addr;
-   \                     ??parseAnswer_13: (+1)
-   \       0xDC   0xF8C4 0x0003      STR      R0,[R4, #+3]
-    224              dbg->pos = 4;
-   \       0xE0   0x2004             MOVS     R0,#+4
-   \       0xE2   0xE02D             B.N      ??parseAnswer_6
-    225              break;
-    226            case 7: // set bkpt
-    227              dbg->pos = 0;
+   \       0xCA   0x6B40             LDR      R0,[R0, #+52]
+    205                break;
+   \       0xCC   0xE006             B.N      ??parseAnswer_16
+    206              case 0x0D:
+    207                addr = (uint32_t)regList; // sp
+    208                break;
+    209              case 0x0E:
+    210                addr = regList->LR;
    \                     ??parseAnswer_29: (+1)
-   \       0xE4   0x2100             MOVS     R1,#+0
-    228              addr = ((*(uint32_t*)(&dbg->buf[1])))|1;
-    229              for (tmp = 0;tmp<8;tmp++)
-   \       0xE6   0x2000             MOVS     R0,#+0
-   \       0xE8   0x70A1             STRB     R1,[R4, #+2]
-   \       0xEA   0xF8D3 0x1001      LDR      R1,[R3, #+1]
-   \       0xEE   0xF041 0x0101      ORR      R1,R1,#0x1
-    230                if (FP->FP_COMP[tmp] == addr)
+   \       0xCE   0x6B80             LDR      R0,[R0, #+56]
+    211                break;
+   \       0xD0   0xE004             B.N      ??parseAnswer_16
+    212              case 0x0F:
+    213                addr = regList->PC;
    \                     ??parseAnswer_30: (+1)
-   \       0xF2   0xF852 0x3020      LDR      R3,[R2, R0, LSL #+2]
-   \       0xF6   0x428B             CMP      R3,R1
-   \       0xF8   0xD002             BEQ.N    ??parseAnswer_31
-   \       0xFA   0x1C40             ADDS     R0,R0,#+1
-   \       0xFC   0x2808             CMP      R0,#+8
-   \       0xFE   0xD3F8             BCC.N    ??parseAnswer_30
-    231                  break;
-    232              
-    233              if (tmp!=8)
+   \       0xD2   0x6BC0             LDR      R0,[R0, #+60]
+    214                break;
+   \       0xD4   0xE002             B.N      ??parseAnswer_16
+    215              case 0x10:
+    216                addr = regList->xPSR;
    \                     ??parseAnswer_31: (+1)
-   \      0x100   0x2808             CMP      R0,#+8
-   \      0x102   0xD11E             BNE.N    ??parseAnswer_4
-    234                break;
-    235              
-    236              for (tmp=0;tmp<NUMOFBKPTS;tmp++)
-   \      0x104   0x2300             MOVS     R3,#+0
-    237                if (FP->FP_COMP[tmp]==0)
+   \       0xD6   0x6C00             LDR      R0,[R0, #+64]
+    217                break;
+   \       0xD8   0xE000             B.N      ??parseAnswer_16
+    218              default:
+    219                addr = 0xDEADFACE;
+   \                     ??parseAnswer_14: (+1)
+   \       0xDA   0x....             LDR.N    R0,??DataTable2_7  ;; 0xdeadface
+    220                break;
+    221              }
+    222              *(uint32_t*)(dbg->buf) = addr;
+   \                     ??parseAnswer_16: (+1)
+   \       0xDC   0xF8C5 0x0003      STR      R0,[R5, #+3]
+    223              dbg->pos = 4;
+   \       0xE0   0x2004             MOVS     R0,#+4
+   \                     ??parseAnswer_7: (+1)
+   \       0xE2   0x70A8             STRB     R0,[R5, #+2]
+    224              break;
+   \       0xE4   0xE075             B.N      ??parseAnswer_5
+    225            case 7: // set bkpt
+    226              dbg->pos = 0;
    \                     ??parseAnswer_32: (+1)
-   \      0x106   0xF852 0x0023      LDR      R0,[R2, R3, LSL #+2]
-   \      0x10A   0xB118             CBZ.N    R0,??parseAnswer_33
-   \      0x10C   0x1C5B             ADDS     R3,R3,#+1
-   \      0x10E   0x2B08             CMP      R3,#+8
-   \      0x110   0xD3F9             BCC.N    ??parseAnswer_32
-   \      0x112   0xE016             B.N      ??parseAnswer_4
-    238                {
-    239                  FP->FP_COMP[tmp] = addr;
+   \       0xE6   0x2100             MOVS     R1,#+0
+    227              addr = ((*(uint32_t*)(&dbg->buf[1])))|1;
+    228              for (tmp = 0;tmp<8;tmp++)
+   \       0xE8   0x2000             MOVS     R0,#+0
+   \       0xEA   0x70A9             STRB     R1,[R5, #+2]
+   \       0xEC   0xF8D3 0x1001      LDR      R1,[R3, #+1]
+   \       0xF0   0xF041 0x0101      ORR      R1,R1,#0x1
+    229                if (FP->FP_COMP[tmp] == addr)
    \                     ??parseAnswer_33: (+1)
-   \      0x114   0xF842 0x1023      STR      R1,[R2, R3, LSL #+2]
-    240                  break;
-   \      0x118   0xE013             B.N      ??parseAnswer_4
-    241                }
-    242              break;
-    243            case 8: // clear bkpt
-    244              dbg->pos = 0;
+   \       0xF4   0xF852 0x3020      LDR      R3,[R2, R0, LSL #+2]
+   \       0xF8   0x428B             CMP      R3,R1
+   \       0xFA   0xD002             BEQ.N    ??parseAnswer_34
+   \       0xFC   0x1C40             ADDS     R0,R0,#+1
+   \       0xFE   0x2808             CMP      R0,#+8
+   \      0x100   0xD3F8             BCC.N    ??parseAnswer_33
+    230                  break;
+    231              
+    232              if (tmp!=8)
    \                     ??parseAnswer_34: (+1)
-   \      0x11A   0x2000             MOVS     R0,#+0
-    245              addr = ((*(uint32_t*)(&dbg->buf[1]))&0xFFFFFFFE)|1;
-    246              for (tmp = 0; tmp<NUMOFBKPTS;tmp++)
-   \      0x11C   0x2100             MOVS     R1,#+0
-   \      0x11E   0x70A0             STRB     R0,[R4, #+2]
-   \      0x120   0xF8D3 0x0001      LDR      R0,[R3, #+1]
-   \      0x124   0x2500             MOVS     R5,#+0
-   \      0x126   0xF040 0x0001      ORR      R0,R0,#0x1
-    247              {
-    248                if (FP->FP_COMP[tmp]==addr)
+   \      0x102   0x2808             CMP      R0,#+8
+   \      0x104   0xD165             BNE.N    ??parseAnswer_5
+    233                break;
+    234              
+    235              for (tmp=0;tmp<NUMOFBKPTS;tmp++)
+   \      0x106   0x2300             MOVS     R3,#+0
+    236                if (FP->FP_COMP[tmp]==0)
    \                     ??parseAnswer_35: (+1)
-   \      0x12A   0xF852 0x3021      LDR      R3,[R2, R1, LSL #+2]
-   \      0x12E   0x4283             CMP      R3,R0
-   \      0x130   0xBF08             IT       EQ 
-   \      0x132   0xF842 0x5021      STREQ    R5,[R2, R1, LSL #+2]
-    249                  FP->FP_COMP[tmp] = 0;
-    250              }
-   \      0x136   0x1C49             ADDS     R1,R1,#+1
-   \      0x138   0x2908             CMP      R1,#+8
-   \      0x13A   0xD3F6             BCC.N    ??parseAnswer_35
-   \      0x13C   0xE001             B.N      ??parseAnswer_4
-    251              break;
-    252            case 9: // step
-    253              dbg->pos = 0;
+   \      0x108   0xF852 0x0023      LDR      R0,[R2, R3, LSL #+2]
+   \      0x10C   0xB118             CBZ.N    R0,??parseAnswer_36
+   \      0x10E   0x1C5B             ADDS     R3,R3,#+1
+   \      0x110   0x2B08             CMP      R3,#+8
+   \      0x112   0xD3F9             BCC.N    ??parseAnswer_35
+   \      0x114   0xE05D             B.N      ??parseAnswer_5
+    237                {
+    238                  FP->FP_COMP[tmp] = addr;
    \                     ??parseAnswer_36: (+1)
-   \      0x13E   0x2000             MOVS     R0,#+0
-   \                     ??parseAnswer_6: (+1)
-   \      0x140   0x70A0             STRB     R0,[R4, #+2]
-    254              break;
-    255            }
-    256            dbg->txCnt = 0;
-    257            dbg->tx = 1;
-   \                     ??parseAnswer_4: (+1)
-   \      0x142   0x6823             LDR      R3,[R4, #+0]
-   \      0x144   0x2100             MOVS     R1,#+0
-   \      0x146   0x....             LDR.N    R2,??DataTable2_7  ;; 0x20001083
-    258            dbg->tx_state = txSendS;
-    259            SET_BIT(USART6->CR1, USART_CR1_TXEIE);
-   \      0x148   0x....             LDR.N    R0,??DataTable2_8  ;; 0x40011400
-   \      0x14A   0x7011             STRB     R1,[R2, #+0]
-   \      0x14C   0xF043 0x0301      ORR      R3,R3,#0x1
-   \      0x150   0x6023             STR      R3,[R4, #+0]
-   \      0x152   0x7061             STRB     R1,[R4, #+1]
-   \      0x154   0x6801             LDR      R1,[R0, #+0]
-   \      0x156   0xF041 0x0180      ORR      R1,R1,#0x80
-   \      0x15A   0x6001             STR      R1,[R0, #+0]
-    260          }
-   \      0x15C   0xBD31             POP      {R0,R4,R5,PC}    ;; return
-    261          
-    262          #define FP_LAR_UNLOCK_KEY 0xc5acce55
-    263          #define FP_LAR_PTR ((unsigned int*) 0xe0002fb0)
-    264          
+   \      0x116   0xF842 0x1023      STR      R1,[R2, R3, LSL #+2]
+    239                  break;
+   \      0x11A   0xE05A             B.N      ??parseAnswer_5
+    240                }
+    241              break;
+    242            case 8: // clear bkpt
+    243              dbg->pos = 0;
+   \                     ??parseAnswer_37: (+1)
+   \      0x11C   0x2000             MOVS     R0,#+0
+    244              addr = ((*(uint32_t*)(&dbg->buf[1]))&0xFFFFFFFE)|1;
+    245              for (tmp = 0; tmp<NUMOFBKPTS;tmp++)
+   \      0x11E   0x2100             MOVS     R1,#+0
+   \      0x120   0x70A8             STRB     R0,[R5, #+2]
+   \      0x122   0xF8D3 0x0001      LDR      R0,[R3, #+1]
+   \      0x126   0x2600             MOVS     R6,#+0
+   \      0x128   0xF040 0x0001      ORR      R0,R0,#0x1
+    246              {
+    247                if (FP->FP_COMP[tmp]==addr)
+   \                     ??parseAnswer_38: (+1)
+   \      0x12C   0xF852 0x3021      LDR      R3,[R2, R1, LSL #+2]
+   \      0x130   0x4283             CMP      R3,R0
+   \      0x132   0xBF08             IT       EQ 
+   \      0x134   0xF842 0x6021      STREQ    R6,[R2, R1, LSL #+2]
+    248                  FP->FP_COMP[tmp] = 0;
+    249              }
+   \      0x138   0x1C49             ADDS     R1,R1,#+1
+   \      0x13A   0x2908             CMP      R1,#+8
+   \      0x13C   0xD3F6             BCC.N    ??parseAnswer_38
+   \      0x13E   0xE048             B.N      ??parseAnswer_5
+    250              break;
+    251            case 9: // step
+    252              dbg->NVICISER[0] = NVIC->ISER[0];
+   \                     ??parseAnswer_39: (+1)
+   \      0x140   0x....             LDR.N    R0,??DataTable2_8  ;; 0xe000e100
+    253              NVIC->ICER[0] = dbg->NVICISER[0];
+   \      0x142   0x....             LDR.N    R2,??DataTable2_9  ;; 0xe000e180
+   \      0x144   0x6801             LDR      R1,[R0, #+0]
+   \      0x146   0xF8C4 0x1001      STR      R1,[R4, #+1]
+   \      0x14A   0x6011             STR      R1,[R2, #+0]
+    254              dbg->NVICISER[1] = NVIC->ISER[1];
+   \      0x14C   0x6841             LDR      R1,[R0, #+4]
+   \      0x14E   0xF8C4 0x1005      STR      R1,[R4, #+5]
+    255              NVIC->ICER[1] = dbg->NVICISER[1];
+   \      0x152   0x6051             STR      R1,[R2, #+4]
+    256              dbg->NVICISER[2] = NVIC->ISER[2];
+   \      0x154   0x6880             LDR      R0,[R0, #+8]
+   \      0x156   0xF8C4 0x0009      STR      R0,[R4, #+9]
+    257              NVIC->ICER[2] = dbg->NVICISER[2];
+   \      0x15A   0x6090             STR      R0,[R2, #+8]
+    258              
+    259              DEMCR|=1<<18; // step the core
+   \      0x15C   0x....             LDR.N    R0,??DataTable2_10  ;; 0xe000edfc
+   \      0x15E   0x6801             LDR      R1,[R0, #+0]
+   \      0x160   0xF441 0x2180      ORR      R1,R1,#0x40000
+   \      0x164   0x6001             STR      R1,[R0, #+0]
+    260              //__disable_irq(); // because step exception occured in interrupt
+    261              dbg->StopProgramm = 0;
+   \      0x166   0x6828             LDR      R0,[R5, #+0]
+   \      0x168   0xF020 0x0002      BIC      R0,R0,#0x2
+   \      0x16C   0x6028             STR      R0,[R5, #+0]
+    262              dbg->pos = 0;
+   \                     ??parseAnswer_11: (+1)
+   \      0x16E   0x2200             MOVS     R2,#+0
+   \      0x170   0x70AA             STRB     R2,[R5, #+2]
+    263              break;
+   \      0x172   0xE02E             B.N      ??parseAnswer_5
+    264            case 10: // write reg
+    265              addr = ((*(uint32_t*)(&dbg->buf[2])));
+    266              switch (dbg->buf[1])
+   \                     ??parseAnswer_40: (+1)
+   \      0x174   0x785A             LDRB     R2,[R3, #+1]
+   \      0x176   0xF8D3 0x1002      LDR      R1,[R3, #+2]
+   \      0x17A   0x2A10             CMP      R2,#+16
+   \      0x17C   0xD829             BHI.N    ??parseAnswer_5
+   \      0x17E   0xE8DF 0xF002      TBB      [PC, R2]
+   \                     ??parseAnswer_2:
+   \      0x182   0x09 0x0B          DC8      0x9,0xB,0xD,0xF
+   \              0x0D 0x0F    
+   \      0x186   0x11 0x13          DC8      0x11,0x13,0x15,0x17
+   \              0x15 0x17    
+   \      0x18A   0x19 0x1B          DC8      0x19,0x1B,0x1D,0x1F
+   \              0x1D 0x1F    
+   \      0x18E   0x21 0x28          DC8      0x21,0x28,0x23,0x25
+   \              0x23 0x25    
+   \      0x192   0x27 0x00          DC8      0x27,0x0
+    267              {
+    268              case 0x00:
+    269                regList->R0 = addr;
+   \                     ??parseAnswer_41: (+1)
+   \      0x194   0x6241             STR      R1,[R0, #+36]
+    270                break;
+   \      0x196   0xE01C             B.N      ??parseAnswer_5
+    271              case 0x01:
+    272                regList->R1 = addr;
+   \                     ??parseAnswer_42: (+1)
+   \      0x198   0x6281             STR      R1,[R0, #+40]
+    273                break;
+   \      0x19A   0xE01A             B.N      ??parseAnswer_5
+    274              case 0x02:
+    275                regList->R2 = addr;
+   \                     ??parseAnswer_43: (+1)
+   \      0x19C   0x62C1             STR      R1,[R0, #+44]
+    276                break;
+   \      0x19E   0xE018             B.N      ??parseAnswer_5
+    277              case 0x03:
+    278                regList->R3 = addr;
+   \                     ??parseAnswer_44: (+1)
+   \      0x1A0   0x6301             STR      R1,[R0, #+48]
+    279                break;
+   \      0x1A2   0xE016             B.N      ??parseAnswer_5
+    280              case 0x04:
+    281                regList->R4 = addr;
+   \                     ??parseAnswer_45: (+1)
+   \      0x1A4   0x6001             STR      R1,[R0, #+0]
+    282                break;
+   \      0x1A6   0xE014             B.N      ??parseAnswer_5
+    283              case 0x05:
+    284                regList->R5 = addr;
+   \                     ??parseAnswer_46: (+1)
+   \      0x1A8   0x6041             STR      R1,[R0, #+4]
+    285                break;
+   \      0x1AA   0xE012             B.N      ??parseAnswer_5
+    286              case 0x06:
+    287                regList->R6 = addr;
+   \                     ??parseAnswer_47: (+1)
+   \      0x1AC   0x6081             STR      R1,[R0, #+8]
+    288                break;
+   \      0x1AE   0xE010             B.N      ??parseAnswer_5
+    289              case 0x07:
+    290                regList->R7 = addr;
+   \                     ??parseAnswer_48: (+1)
+   \      0x1B0   0x60C1             STR      R1,[R0, #+12]
+    291                break;
+   \      0x1B2   0xE00E             B.N      ??parseAnswer_5
+    292              case 0x08:
+    293                regList->R8 = addr;
+   \                     ??parseAnswer_49: (+1)
+   \      0x1B4   0x6101             STR      R1,[R0, #+16]
+    294                break;
+   \      0x1B6   0xE00C             B.N      ??parseAnswer_5
+    295              case 0x09:
+    296                regList->R9 = addr;
+   \                     ??parseAnswer_50: (+1)
+   \      0x1B8   0x6141             STR      R1,[R0, #+20]
+    297                break;
+   \      0x1BA   0xE00A             B.N      ??parseAnswer_5
+    298              case 0x0A:
+    299                regList->R10 = addr;
+   \                     ??parseAnswer_51: (+1)
+   \      0x1BC   0x6181             STR      R1,[R0, #+24]
+    300                break;
+   \      0x1BE   0xE008             B.N      ??parseAnswer_5
+    301              case 0x0B:
+    302                regList->R11 = addr;
+   \                     ??parseAnswer_52: (+1)
+   \      0x1C0   0x61C1             STR      R1,[R0, #+28]
+    303                break;
+   \      0x1C2   0xE006             B.N      ??parseAnswer_5
+    304              case 0x0C:
+    305                regList->R12 = addr;
+   \                     ??parseAnswer_53: (+1)
+   \      0x1C4   0x6341             STR      R1,[R0, #+52]
+    306                break;
+   \      0x1C6   0xE004             B.N      ??parseAnswer_5
+    307              case 0x0D:
+    308                //(uint32_t)regList; // sp
+    309                break;
+    310              case 0x0E:
+    311                regList->LR = addr;
+   \                     ??parseAnswer_54: (+1)
+   \      0x1C8   0x6381             STR      R1,[R0, #+56]
+    312                break;
+   \      0x1CA   0xE002             B.N      ??parseAnswer_5
+    313              case 0x0F:
+    314                regList->PC = addr;
+   \                     ??parseAnswer_55: (+1)
+   \      0x1CC   0x63C1             STR      R1,[R0, #+60]
+    315                break;
+   \      0x1CE   0xE000             B.N      ??parseAnswer_5
+    316              case 0x10:
+    317                regList->xPSR = addr;
+   \                     ??parseAnswer_56: (+1)
+   \      0x1D0   0x6401             STR      R1,[R0, #+64]
+    318                break;
+    319              }
+    320              break;
+    321            }
+    322            dbg->txCnt = 0;
+    323            dbg->tx = 1;
+   \                     ??parseAnswer_5: (+1)
+   \      0x1D2   0x6829             LDR      R1,[R5, #+0]
+   \      0x1D4   0x2000             MOVS     R0,#+0
+   \      0x1D6   0x7020             STRB     R0,[R4, #+0]
+   \      0x1D8   0xF041 0x0101      ORR      R1,R1,#0x1
+   \      0x1DC   0x6029             STR      R1,[R5, #+0]
+    324            dbg->tx_state = txSendS;
+   \      0x1DE   0x7068             STRB     R0,[R5, #+1]
+    325            SET_BIT(USART6->CR1, USART_CR1_TXEIE);
+   \      0x1E0   0x....             LDR.N    R0,??DataTable2_11  ;; 0x40011400
+   \      0x1E2   0x6803             LDR      R3,[R0, #+0]
+   \      0x1E4   0xF043 0x0380      ORR      R3,R3,#0x80
+   \      0x1E8   0x6003             STR      R3,[R0, #+0]
+    326          }
+   \      0x1EA   0xBD70             POP      {R4-R6,PC}       ;; return
+    327          
+    328          #define FP_LAR_UNLOCK_KEY 0xc5acce55
+    329          #define FP_LAR_PTR ((unsigned int*) 0xe0002fb0)
+    330          
 
    \                                 In section .text, align 2, keep-with-next
-    265          void initDbg()
-    266          {
+    331          void initDbg()
+    332          {
    \                     initDbg: (+1)
    \        0x0   0xB530             PUSH     {R4,R5,LR}
-    267            *FP_LAR_PTR = FP_LAR_UNLOCK_KEY;
-   \        0x2   0x....             LDR.N    R0,??DataTable2_9  ;; 0xc5acce55
-   \        0x4   0x....             LDR.N    R1,??DataTable2_10  ;; 0xe0002fb0
-   \        0x6   0x6008             STR      R0,[R1, #+0]
-    268            DEMCR   = 0x00010000; // enable debug mon
-    269            FP->FP_CTRL = 0x00000003; // enable flash patch
-   \        0x8   0x....             LDR.N    R0,??DataTable2_11  ;; 0xe0002000
-   \        0xA   0x2403             MOVS     R4,#+3
-    270            FP->FP_COMP[0] = 0x080017CC | 1; // set breakpoint in main loop
-   \        0xC   0x....             LDR.N    R5,??DataTable2_12  ;; 0x80017cd
-   \        0xE   0xF44F 0x3280      MOV      R2,#+65536
-   \       0x12   0x6004             STR      R4,[R0, #+0]
-   \       0x14   0x....             LDR.N    R3,??DataTable2_13  ;; 0xe000edfc
-   \       0x16   0x6085             STR      R5,[R0, #+8]
-   \       0x18   0x601A             STR      R2,[R3, #+0]
-    271          
-    272            for (int i=0;i<sizeof(dbg_t);i+=4)
-   \       0x1A   0x2000             MOVS     R0,#+0
-   \       0x1C   0x....             LDR.N    R1,??DataTable2_1  ;; 0x20001000
-   \       0x1E   0x2400             MOVS     R4,#+0
-    273              (((uint32_t*)dbgG)[i/4])=0;
+    333            *FP_LAR_PTR = FP_LAR_UNLOCK_KEY;
+   \        0x2   0x....             LDR.N    R0,??DataTable2_12  ;; 0xc5acce55
+   \        0x4   0x....             LDR.N    R1,??DataTable2_13  ;; 0xe0002fb0
+    334            DEMCR   = 0x00010000; // enable debug mon
+    335            FP->FP_CTRL = 0x00000003; // enable flash patch
+   \        0x6   0x2403             MOVS     R4,#+3
+   \        0x8   0x....             LDR.N    R5,??DataTable2_14  ;; 0xe0002000
+   \        0xA   0x6008             STR      R0,[R1, #+0]
+   \        0xC   0xF44F 0x3280      MOV      R2,#+65536
+   \       0x10   0x....             LDR.N    R3,??DataTable2_10  ;; 0xe000edfc
+   \       0x12   0x602C             STR      R4,[R5, #+0]
+   \       0x14   0x601A             STR      R2,[R3, #+0]
+    336            //FP->FP_COMP[0] = 0x080017CC | 1; // set breakpoint in main loop
+    337          
+    338            for (int i=0;i<sizeof(dbg_t);i+=4)
+   \       0x16   0x2000             MOVS     R0,#+0
+   \       0x18   0x....             LDR.N    R1,??DataTable2_1  ;; 0x20001000
+   \       0x1A   0x2400             MOVS     R4,#+0
+    339              (((uint32_t*)dbgG)[i/4])=0;
    \                     ??initDbg_0: (+1)
-   \       0x20   0x1042             ASRS     R2,R0,#+1
-   \       0x22   0xEB00 0x7392      ADD      R3,R0,R2, LSR #+30
-   \       0x26   0x1D00             ADDS     R0,R0,#+4
-   \       0x28   0x109B             ASRS     R3,R3,#+2
-   \       0x2A   0x288C             CMP      R0,#+140
-   \       0x2C   0xF841 0x4023      STR      R4,[R1, R3, LSL #+2]
-   \       0x30   0xD3F6             BCC.N    ??initDbg_0
-    274          }
-   \       0x32   0xBD30             POP      {R4,R5,PC}       ;; return
+   \       0x1C   0x1042             ASRS     R2,R0,#+1
+   \       0x1E   0xEB00 0x7392      ADD      R3,R0,R2, LSR #+30
+   \       0x22   0x1D00             ADDS     R0,R0,#+4
+   \       0x24   0x109B             ASRS     R3,R3,#+2
+   \       0x26   0x2890             CMP      R0,#+144
+   \       0x28   0xF841 0x4023      STR      R4,[R1, R3, LSL #+2]
+   \       0x2C   0xD3F6             BCC.N    ??initDbg_0
+    340          }
+   \       0x2E   0xBD30             POP      {R4,R5,PC}       ;; return
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable2:
@@ -561,184 +709,188 @@ D:\win10\f7dbg\dbgTST\EWARM\dbgC.c
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable2_2:
-   \        0x0   0x2000'1008        DC32     0x20001008
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2_3:
-   \        0x0   0xE000'2008        DC32     0xe0002008
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2_4:
-   \        0x0   0x2000'1003        DC32     0x20001003
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2_5:
-   \        0x0   0xE000'201C        DC32     0xe000201c
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2_6:
-   \        0x0   0xDEAD'FACE        DC32     0xdeadface
-
-   \                                 In section .text, align 4, keep-with-next
-   \                     ??DataTable2_7:
    \        0x0   0x2000'1083        DC32     0x20001083
 
    \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_3:
+   \        0x0   0x2000'1008        DC32     0x20001008
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_4:
+   \        0x0   0xE000'2008        DC32     0xe0002008
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_5:
+   \        0x0   0x2000'1003        DC32     0x20001003
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_6:
+   \        0x0   0xE000'201C        DC32     0xe000201c
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_7:
+   \        0x0   0xDEAD'FACE        DC32     0xdeadface
+
+   \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable2_8:
-   \        0x0   0x4001'1400        DC32     0x40011400
+   \        0x0   0xE000'E100        DC32     0xe000e100
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable2_9:
-   \        0x0   0xC5AC'CE55        DC32     0xc5acce55
+   \        0x0   0xE000'E180        DC32     0xe000e180
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable2_10:
-   \        0x0   0xE000'2FB0        DC32     0xe0002fb0
+   \        0x0   0xE000'EDFC        DC32     0xe000edfc
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable2_11:
-   \        0x0   0xE000'2000        DC32     0xe0002000
+   \        0x0   0x4001'1400        DC32     0x40011400
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable2_12:
-   \        0x0   0x0800'17CD        DC32     0x80017cd
+   \        0x0   0xC5AC'CE55        DC32     0xc5acce55
 
    \                                 In section .text, align 4, keep-with-next
    \                     ??DataTable2_13:
-   \        0x0   0xE000'EDFC        DC32     0xe000edfc
-    275          
-    276          
-    277          /*
-    278          void rxCb(uint8_t byte)
-    279          {
-    280            dbg_t* dbg = dbgG; // debug vars pointer
-    281            
-    282            if (dbg->tx) // use half duplex mode
-    283              return;
-    284            
-    285            switch(dbg->rx_state)
-    286            {
-    287            default:
-    288            case rxWaitS:
-    289              if (byte==0xAA)
-    290                dbg->rx_state = rxWaitC;
-    291              break;
-    292            case rxWaitC:
-    293              if (byte == 0xFF)
-    294                dbg->rx_state = rxReceive;
-    295              else
-    296                dbg->rx_state = rxWaitS;
-    297              dbg->pos = 0;
-    298              break;
-    299            case rxReceive:
-    300              if (byte == 0xAA)
-    301                dbg->rx_state = rxEsc;
-    302              else
-    303                dbg->buf[dbg->pos++] = byte;
-    304              break;
-    305            case rxEsc:
-    306              if (byte == 0xAA)
-    307              {
-    308                dbg->buf[dbg->pos++] = byte;
-    309                dbg->rx_state  = rxReceive;
-    310              }
-    311              else if (byte == 0x00)
-    312              {
-    313                parseAnswer();
-    314              }
-    315              else
-    316                dbg->rx_state = rxWaitS;
-    317            }
-    318          }
-    319          
-    320          void txCb()
-    321          {
-    322            dbg_t* dbg = dbgG;
-    323            switch (dbg->tx_state)
-    324            {
-    325            case txSendS:
-    326              USART6->TDR = 0xAA;
-    327              dbg->tx_state = txSendC;
-    328              break;
-    329            case txSendC:
-    330              USART6->TDR = 0xFF;
-    331              dbg->tx_state = txSendN;
-    332              break;
-    333            case txSendN:
-    334              if (dbg->txCnt>=dbg->pos)
-    335              {
-    336                USART6->TDR = 0xAA;
-    337                dbg->tx_state = txEnd;
-    338                break;
-    339              }
-    340              if (dbg->buf[dbg->txCnt]==0xAA)
-    341              {
-    342                USART6->TDR = 0xAA;
-    343                dbg->tx_state = txEsc;
-    344                break;
-    345              }
-    346              USART6->TDR = dbg->buf[dbg->txCnt++];
-    347              break;
-    348            case txEsc:
-    349              USART6->TDR = 0xAA;
-    350              dbg->txCnt++;
-    351              dbg->tx_state = txSendN;
-    352              break;
-    353            case txEnd:
-    354              USART6->TDR = 0x00;
-    355              dbg->rx_state = rxWaitS;
-    356              dbg->tx = 0;
-    357              CLEAR_BIT(USART6->CR1, USART_CR1_TXEIE);
-    358              break;
-    359            case txSendS2:
-    360              USART6->TDR = 0xAA;
-    361              dbg->tx_state = txBrk;
-    362              break;
-    363            case txBrk:
-    364              USART6->TDR = 0xA5;
-    365              dbg->rx_state = rxWaitS;
-    366              dbg->tx = 0;
-    367              CLEAR_BIT(USART6->CR1, USART_CR1_TXEIE);
-    368              break;
-    369            }
-    370          }
-    371          
-    372          void DebugMon_HandlerO(void)
-    373          {
-    374            //HAL_NVIC_DisableIRQ(USART6_IRQn);
-    375            dbgG->StopProgramm = 1;
-    376            
-    377            for (int i=0;i<8;i++)
-    378              FP->FP_COMP[i] = 0;
-    379            
-    380            while (USART6->CR1 & USART_CR1_TXEIE)
-    381            {
-    382              if ((USART6->ISR & USART_ISR_TXE) != 0U)
-    383              {
-    384                txCb();
-    385              }
-    386            }
-    387            
-    388            dbgG->tx_state = txSendS2;
-    389            dbgG->tx = 1;
-    390            SET_BIT(USART6->CR1, USART_CR1_TXEIE);
-    391            while (dbgG->StopProgramm)
-    392            {
-    393              if (((USART6->ISR & USART_ISR_RXNE) != 0U)
-    394                  && ((USART6->CR1 & USART_CR1_RXNEIE) != 0U))
-    395              {
-    396                rxCb(USART6->RDR);
-    397              }
-    398          
-    399              if (((USART6->ISR & USART_ISR_TXE) != 0U)
-    400                  && ((USART6->CR1 & USART_CR1_TXEIE) != 0U))
+   \        0x0   0xE000'2FB0        DC32     0xe0002fb0
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_14:
+   \        0x0   0xE000'2000        DC32     0xe0002000
+    341          
+    342          
+    343          /*
+    344          void rxCb(uint8_t byte)
+    345          {
+    346            dbg_t* dbg = dbgG; // debug vars pointer
+    347            
+    348            if (dbg->tx) // use half duplex mode
+    349              return;
+    350            
+    351            switch(dbg->rx_state)
+    352            {
+    353            default:
+    354            case rxWaitS:
+    355              if (byte==0xAA)
+    356                dbg->rx_state = rxWaitC;
+    357              break;
+    358            case rxWaitC:
+    359              if (byte == 0xFF)
+    360                dbg->rx_state = rxReceive;
+    361              else
+    362                dbg->rx_state = rxWaitS;
+    363              dbg->pos = 0;
+    364              break;
+    365            case rxReceive:
+    366              if (byte == 0xAA)
+    367                dbg->rx_state = rxEsc;
+    368              else
+    369                dbg->buf[dbg->pos++] = byte;
+    370              break;
+    371            case rxEsc:
+    372              if (byte == 0xAA)
+    373              {
+    374                dbg->buf[dbg->pos++] = byte;
+    375                dbg->rx_state  = rxReceive;
+    376              }
+    377              else if (byte == 0x00)
+    378              {
+    379                parseAnswer();
+    380              }
+    381              else
+    382                dbg->rx_state = rxWaitS;
+    383            }
+    384          }
+    385          
+    386          void txCb()
+    387          {
+    388            dbg_t* dbg = dbgG;
+    389            switch (dbg->tx_state)
+    390            {
+    391            case txSendS:
+    392              USART6->TDR = 0xAA;
+    393              dbg->tx_state = txSendC;
+    394              break;
+    395            case txSendC:
+    396              USART6->TDR = 0xFF;
+    397              dbg->tx_state = txSendN;
+    398              break;
+    399            case txSendN:
+    400              if (dbg->txCnt>=dbg->pos)
     401              {
-    402                txCb();
-    403              }
-    404              
-    405            }
-    406          }
-    407          */
+    402                USART6->TDR = 0xAA;
+    403                dbg->tx_state = txEnd;
+    404                break;
+    405              }
+    406              if (dbg->buf[dbg->txCnt]==0xAA)
+    407              {
+    408                USART6->TDR = 0xAA;
+    409                dbg->tx_state = txEsc;
+    410                break;
+    411              }
+    412              USART6->TDR = dbg->buf[dbg->txCnt++];
+    413              break;
+    414            case txEsc:
+    415              USART6->TDR = 0xAA;
+    416              dbg->txCnt++;
+    417              dbg->tx_state = txSendN;
+    418              break;
+    419            case txEnd:
+    420              USART6->TDR = 0x00;
+    421              dbg->rx_state = rxWaitS;
+    422              dbg->tx = 0;
+    423              CLEAR_BIT(USART6->CR1, USART_CR1_TXEIE);
+    424              break;
+    425            case txSendS2:
+    426              USART6->TDR = 0xAA;
+    427              dbg->tx_state = txBrk;
+    428              break;
+    429            case txBrk:
+    430              USART6->TDR = 0xA5;
+    431              dbg->rx_state = rxWaitS;
+    432              dbg->tx = 0;
+    433              CLEAR_BIT(USART6->CR1, USART_CR1_TXEIE);
+    434              break;
+    435            }
+    436          }
+    437          
+    438          void DebugMon_HandlerO(void)
+    439          {
+    440            //HAL_NVIC_DisableIRQ(USART6_IRQn);
+    441            dbgG->StopProgramm = 1;
+    442            
+    443            for (int i=0;i<8;i++)
+    444              FP->FP_COMP[i] = 0;
+    445            
+    446            while (USART6->CR1 & USART_CR1_TXEIE)
+    447            {
+    448              if ((USART6->ISR & USART_ISR_TXE) != 0U)
+    449              {
+    450                txCb();
+    451              }
+    452            }
+    453            
+    454            dbgG->tx_state = txSendS2;
+    455            dbgG->tx = 1;
+    456            SET_BIT(USART6->CR1, USART_CR1_TXEIE);
+    457            while (dbgG->StopProgramm)
+    458            {
+    459              if (((USART6->ISR & USART_ISR_RXNE) != 0U)
+    460                  && ((USART6->CR1 & USART_CR1_RXNEIE) != 0U))
+    461              {
+    462                rxCb(USART6->RDR);
+    463              }
+    464          
+    465              if (((USART6->ISR & USART_ISR_TXE) != 0U)
+    466                  && ((USART6->CR1 & USART_CR1_TXEIE) != 0U))
+    467              {
+    468                txCb();
+    469              }
+    470              
+    471            }
+    472          }
+    473          */
 
    Maximum stack usage in bytes:
 
@@ -760,6 +912,7 @@ D:\win10\f7dbg\dbgTST\EWARM\dbgC.c
        4  ??DataTable2_11
        4  ??DataTable2_12
        4  ??DataTable2_13
+       4  ??DataTable2_14
        4  ??DataTable2_2
        4  ??DataTable2_3
        4  ??DataTable2_4
@@ -768,14 +921,14 @@ D:\win10\f7dbg\dbgTST\EWARM\dbgC.c
        4  ??DataTable2_7
        4  ??DataTable2_8
        4  ??DataTable2_9
-      52  initDbg
+      48  initDbg
       60  memcpySafe
-     350  parseAnswer
+     492  parseAnswer
 
  
- 518 bytes in section .text
+ 660 bytes in section .text
  
- 518 bytes of CODE memory
+ 660 bytes of CODE memory
 
 Errors: none
 Warnings: none

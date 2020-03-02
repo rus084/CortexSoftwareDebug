@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\win10\f7dbg\dbgTST\EWARM\settings\dbgTST.dbgTST.general.xcl" --backend -f "D:\win10\f7dbg\dbgTST\EWARM\settings\dbgTST.dbgTST.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\win10\f7dbg\git\EWARM\settings\dbgTST.dbgTST.general.xcl" --backend -f "D:\win10\f7dbg\git\EWARM\settings\dbgTST.dbgTST.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\win10\f7dbg\dbgTST\EWARM\settings\dbgTST.dbgTST.general.xcl" --debug_file=$debugfile --backend -f "D:\win10\f7dbg\dbgTST\EWARM\settings\dbgTST.dbgTST.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\win10\f7dbg\git\EWARM\settings\dbgTST.dbgTST.general.xcl" --debug_file=$debugfile --backend -f "D:\win10\f7dbg\git\EWARM\settings\dbgTST.dbgTST.driver.xcl" 
 }

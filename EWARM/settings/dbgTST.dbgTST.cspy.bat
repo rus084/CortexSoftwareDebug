@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\win10\f7dbg\dbgTST\EWARM\settings\dbgTST.dbgTST.general.xcl" --backend -f "D:\win10\f7dbg\dbgTST\EWARM\settings\dbgTST.dbgTST.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\win10\f7dbg\git\EWARM\settings\dbgTST.dbgTST.general.xcl" --backend -f "D:\win10\f7dbg\git\EWARM\settings\dbgTST.dbgTST.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\win10\f7dbg\dbgTST\EWARM\settings\dbgTST.dbgTST.general.xcl" "--debug_file=%~1" --backend -f "D:\win10\f7dbg\dbgTST\EWARM\settings\dbgTST.dbgTST.driver.xcl" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "D:\win10\f7dbg\git\EWARM\settings\dbgTST.dbgTST.general.xcl" "--debug_file=%~1" --backend -f "D:\win10\f7dbg\git\EWARM\settings\dbgTST.dbgTST.driver.xcl" 
 
 @echo off 
 :end

@@ -17,30 +17,54 @@
         #define USART_RDR_OFFSET              36
         #define USART_TDR_OFFSET              40
         
+        #define NVIC_ADDR 0xE000E100
+        
         PUBLIC DebugMon_Handler
         SECTION .text:CODE:NOROOT:REORDER(2)
 DebugMon_Handler        
-/*
-        LDR r0, =DBG_ADDR       ; check pending breakpoint
-        ldr r1, [r0,#0x84]      ;
-        cmp r1, #0              ;
-        beq DebugMon_StopEXEC   ;
+/*      ; first way
+        LDR     r0, =DBG_ADDR       ; check pending breakpoint
+        ldr     r1, [r0,#0x84]      ;
+        cmp     r1, #0              ;
+        beq     DebugMon_StopEXEC   ;
 
-        mov r2, #0              ; clear pend bkpt
-        str r2, [r0,#0x84]      ;
+        mov     r2, #0              ; clear pend bkpt
+        str     r2, [r0,#0x84]      ;
         
-        ldrb r2, [r0,#0x85]     ; ldr bkpt num
-        lsl r2,r2,#2            ; register size is 4 byte
-        ldr r0, =(FP+8)         ; ldr fp addr
-        str r1, [r0,r2]         ; set pend irq
+        ldrb    r2, [r0,#0x85]      ; ldr bkpt num
+        lsl     r2,r2,#2            ; register size is 4 byte
+        ldr     r0, =(FP+8)         ; ldr fp addr
+        str     r1, [r0,r2]         ; set pend irq
 
-        ldr r0, =DEMCR
-        ldr r2, =0xFFFBFFFF
-        ldr r1, [r0]
-        and r1, r1, r2
-        str r1, [r0]
-        bx lr
-*/        
+        ldr     r0, =DEMCR
+        ldr     r2, =0xFFFBFFFF
+        ldr     r1, [r0]
+        and     r1, r1, r2
+        str     r1, [r0]
+        CPSIE   I                   ; enable irqs
+        bx      lr
+*/
+
+      ;another way 
+        ldr     r0, =DEMCR          ; load addr of debug regs
+        ldr     r2, =(1<<18)        ; load step mask
+        ldr     r1, [r0]            ; r1 = demcr
+        ands    r2, r1, r2          ; r2 = demcr & (1<<18)
+        beq     DebugMon_StopEXEC   ; if r2 == 0 its not step reason
+
+        ldr     r2, =~(1<<18)       ; mask for clear stepping bit
+        and     r1, r1, r2          ; DEMCR.MON_STEP = 0
+        str     r1, [r0]
+        
+        ldr     r0, =NVIC_ADDR
+        ldr     r1, =DBG_ADDR
+        ldr     r2, [r1,#0x84]
+        str     r2, [r0,#0]
+        ldr     r2, [r1,#0x88]
+        str     r2, [r0,#4]
+        ldr     r2, [r1,#0x8C]
+        str     r2, [r0,#8]
+        
 DebugMon_StopEXEC
         ldr     r0, =FP             ; clear breakpoints
         mov     r1, #0              ;

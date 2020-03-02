@@ -71,8 +71,7 @@ typedef struct
   uint8_t pos; // receive/send position
   uint8_t buf[128];
   uint8_t txCnt; // size of send data
-  uint32_t SetBkpt;
-  uint8_t BkptNum;
+  uint32_t NVICISER[3];
 } dbg_t;
 
 #define dbgG ((dbg_t*)DBG_ADDR)
@@ -142,10 +141,9 @@ void parseAnswer(exceptionFrame_t* regList)
     dbg->pos = 0;
     break;
   case 5: // continue execution
-    
-    addr = __get_MSP();
-    addr = (*(uint32_t*)(addr+0x28)) | 1;
     /*
+    addr = regList->PC | 1;
+    
     for (tmp=0;tmp<NUMOFBKPTS;tmp++)
     {
       if (FP->FP_COMP[tmp]==addr)
@@ -153,11 +151,12 @@ void parseAnswer(exceptionFrame_t* regList)
         dbg->SetBkpt = addr;
         dbg->BkptNum = tmp;
         FP->FP_COMP[tmp] = 0;
+        
+        DEMCR|=1<<18; // step the core
+        __disable_irq(); // because step exception occured in interrupt
+        break;
       }
     }
-    
-    if (tmp!=NUMOFBKPTS)
-      DEMCR|=1<<18; // step the core
     */
     dbg->StopProgramm = 0;
     dbg->pos = 0;
@@ -250,7 +249,74 @@ void parseAnswer(exceptionFrame_t* regList)
     }
     break;
   case 9: // step
+    dbg->NVICISER[0] = NVIC->ISER[0];
+    NVIC->ICER[0] = dbg->NVICISER[0];
+    dbg->NVICISER[1] = NVIC->ISER[1];
+    NVIC->ICER[1] = dbg->NVICISER[1];
+    dbg->NVICISER[2] = NVIC->ISER[2];
+    NVIC->ICER[2] = dbg->NVICISER[2];
+    
+    DEMCR|=1<<18; // step the core
+    //__disable_irq(); // because step exception occured in interrupt
+    dbg->StopProgramm = 0;
     dbg->pos = 0;
+    break;
+  case 10: // write reg
+    addr = ((*(uint32_t*)(&dbg->buf[2])));
+    switch (dbg->buf[1])
+    {
+    case 0x00:
+      regList->R0 = addr;
+      break;
+    case 0x01:
+      regList->R1 = addr;
+      break;
+    case 0x02:
+      regList->R2 = addr;
+      break;
+    case 0x03:
+      regList->R3 = addr;
+      break;
+    case 0x04:
+      regList->R4 = addr;
+      break;
+    case 0x05:
+      regList->R5 = addr;
+      break;
+    case 0x06:
+      regList->R6 = addr;
+      break;
+    case 0x07:
+      regList->R7 = addr;
+      break;
+    case 0x08:
+      regList->R8 = addr;
+      break;
+    case 0x09:
+      regList->R9 = addr;
+      break;
+    case 0x0A:
+      regList->R10 = addr;
+      break;
+    case 0x0B:
+      regList->R11 = addr;
+      break;
+    case 0x0C:
+      regList->R12 = addr;
+      break;
+    case 0x0D:
+      //(uint32_t)regList; // sp
+      break;
+    case 0x0E:
+      regList->LR = addr;
+      break;
+    case 0x0F:
+      regList->PC = addr;
+      break;
+    case 0x10:
+      regList->xPSR = addr;
+      break;
+    }
     break;
   }
   dbg->txCnt = 0;
@@ -267,7 +333,7 @@ void initDbg()
   *FP_LAR_PTR = FP_LAR_UNLOCK_KEY;
   DEMCR   = 0x00010000; // enable debug mon
   FP->FP_CTRL = 0x00000003; // enable flash patch
-  FP->FP_COMP[0] = 0x080017CC | 1; // set breakpoint in main loop
+  //FP->FP_COMP[0] = 0x080017CC | 1; // set breakpoint in main loop
 
   for (int i=0;i<sizeof(dbg_t);i+=4)
     (((uint32_t*)dbgG)[i/4])=0;

@@ -84,7 +84,7 @@
                 </option>
                 <option>
                     <name>OCDynDriverList</name>
-                    <state>STLINK_ID</state>
+                    <state>GDBSERVER_ID</state>
                 </option>
                 <option>
                     <name>OCLastSavedByProductVersion</name>
